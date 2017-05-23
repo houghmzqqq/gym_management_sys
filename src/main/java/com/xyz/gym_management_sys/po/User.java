@@ -12,6 +12,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 public class User implements Serializable 
 {
+	//自增长的用户主键ID
 	private int userId;
 	private String userName;
 	private String password;

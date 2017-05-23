@@ -16,6 +16,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Admin implements Serializable {
+	//自增长的主键
 	private int adminId;
 	private String adminName;
 	private String password;

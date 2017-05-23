@@ -71,6 +71,8 @@ public class Admin implements Serializable {
 //	public void setRoleId(int roleId) {
 //		this.roleId = roleId;
 //	}
+	
+	//多对一的外键关系
 	@ManyToOne(targetEntity=Role.class)
 	@JoinColumn(name="role_id",nullable=false)
 	public Role getRole() {

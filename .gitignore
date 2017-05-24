@@ -32,6 +32,12 @@ buildNumber.properties
 *.tar.gz
 *.rar
 
+.springBeans
+
+.settings/
+
+src/test
+
 #cfg xml
 src/main/java/hibernate.cfg.xml
 
@@ -39,3 +45,4 @@ src/main/java/hibernate.cfg.xml
 hs_err_pid*
 
 .gitignore
+

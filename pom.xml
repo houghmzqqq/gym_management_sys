@@ -169,6 +169,7 @@
 	</dependencies>
 	<build>
 		<finalName>gym_management_system</finalName>
+		
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>

@@ -6,6 +6,7 @@
 	
   <display-name>gym_management_sys</display-name>
   
+  <!-- log4j配置 -->
   <context-param>    
         <param-name>log4jConfigLocation</param-name>    
         <param-value>classpath:log4j.properties</param-value>    

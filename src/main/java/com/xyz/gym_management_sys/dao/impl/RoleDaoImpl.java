@@ -22,17 +22,18 @@ public class RoleDaoImpl implements RoleDao {
 
 	public void updateRole(Role role) {
 		// TODO Auto-generated method stub
+		hibernate.update(role);
 
 	}
 
 	public void deleteRole(Role role) {
 		// TODO Auto-generated method stub
-
+		hibernate.delete(role);
 	}
 
 	public List<Role> findRoleByNotNullProp(Role role) {
 		// TODO Auto-generated method stub
-		return null;
+		return hibernate.findByExample(role);
 	}
 
 }

@@ -37,5 +37,10 @@ public class EquType implements Serializable {
 	public void setEquTypeName(String equTypeName) {
 		this.equTypeName = equTypeName;
 	}
+	@Override
+	public String toString() {
+		return "EquType [equTypeId=" + equTypeId + ", equTypeName=" + equTypeName + "]";
+	}
+	
 	
 }

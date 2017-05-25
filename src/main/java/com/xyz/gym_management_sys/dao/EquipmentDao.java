@@ -38,5 +38,8 @@ public interface EquipmentDao
 		 */
 		public List<Equipment> getEquipmentsByEquTypeId(int equTypeId);
 		
-
+		/**
+		 *获取所有器材
+		 */
+		public List<Equipment> getAllEquipment();
 }

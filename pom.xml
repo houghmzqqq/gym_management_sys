@@ -149,11 +149,18 @@
 			</exclusions>
 		</dependency>
 
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-		</dependency>
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>3.8.1</version>
+	</dependency>
+
+     <!-- dozer配置 -->
+	<dependency>
+		<groupId>net.sf.dozer</groupId>
+		<artifactId>dozer</artifactId>
+		<version>5.5.1</version>
+	</dependency>
 
 		<dependency>
 			<groupId>mysql</groupId>

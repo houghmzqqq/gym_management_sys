@@ -37,6 +37,7 @@ public class EquipmentDaoImplTest
 //		testDel();
 //		testUpdate();
 		test04();
+		test05();
 	}
 	
 	public void testAdd()
@@ -67,7 +68,16 @@ public class EquipmentDaoImplTest
 		
 		for(Equipment equipment : equipments)
 		{
-			System.out.println(equipment);
+			System.out.println("allEquipment----"+equipment);
+		}
+	}
+	
+	public void test05()
+	{
+		List<Equipment> equipments = equipmentDao.getPageEquipment(3, 5);
+		for(Equipment equipment : equipments)
+		{
+			System.out.println("pageEquipment---"+equipment.getEquId());
 		}
 	}
 }

@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 import javax.annotation.Resource;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -66,5 +67,11 @@ public class EquipmentDaoImpl implements EquipmentDao {
 		List<Equipment> equipments = (List<Equipment>) hibernateTemplate.find("from Equipment");
 		return equipments;
 	}
-
+	
+	public List<Equipment> getPageEquipment(int startRow,int rowOfEachPage){
+		// TODO Auto-generated method stub
+		
+		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Equipment.class);
+		return (List<Equipment>) hibernateTemplate.findByCriteria(detachedCriteria, startRow, rowOfEachPage);
+	}	
 }

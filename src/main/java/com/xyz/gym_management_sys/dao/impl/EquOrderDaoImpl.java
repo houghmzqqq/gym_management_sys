@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -39,6 +40,13 @@ public class EquOrderDaoImpl implements EquOrderDao {
 		
 		String hql = "from EquOrder order where order.user.userId=?";
 		return (List<EquOrder>) hibernateTemplate.find(hql, userId);
+	}
+
+	public List<EquOrder> getPageEquOrder(int startRow, int rowCount) {
+		// TODO Auto-generated method stub
+		
+		DetachedCriteria criteria = DetachedCriteria.forClass(EquOrder.class);
+		return (List<EquOrder>) hibernateTemplate.findByCriteria(criteria, startRow, rowCount);
 	}
 
 }

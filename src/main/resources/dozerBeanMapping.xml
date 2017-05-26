@@ -4,8 +4,4 @@
 		<stop-on-errors>true</stop-on-errors>
 		<wildcard>true</wildcard>
 	</configuration>
-	<mapping>
-		<class-a>com.xyz.gym_management_sys.po.Role</class-a>
-		<class-b>com.xyz.gym_management_sys.vo.RoleVo</class-b>
-	</mapping>
 </mappings>

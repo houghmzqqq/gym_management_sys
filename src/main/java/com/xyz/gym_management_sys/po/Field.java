@@ -31,7 +31,7 @@ public class Field implements Serializable {
 		this.fieldType = fieldType;
 	}
 	@ManyToOne(targetEntity=FieldType.class)
-	@JoinColumn(name="field_type_id",nullable=false)
+	@JoinColumn(name="field_type_id",nullable=true)
 	public FieldType getFieldType() {
 		return fieldType;
 	}

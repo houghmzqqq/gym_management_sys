@@ -35,7 +35,7 @@ public class EquOrderItem implements Serializable {
 		this.equOrder = equOrder;
 	}
 	@ManyToOne(targetEntity=Equipment.class)
-	@JoinColumn(name="equ_id",nullable=false)
+	@JoinColumn(name="equ_id",nullable=true)
 	public Equipment getEquipment() {
 		return equipment;
 	}

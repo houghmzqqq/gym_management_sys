@@ -40,7 +40,7 @@ public class FieldOrderItem implements Serializable {
 		this.fieldOrder = fieldOrder;
 	}
 	@ManyToOne(targetEntity=Field.class)
-	@JoinColumn(name="field_id",nullable=false)
+	@JoinColumn(name="field_id",nullable=true)
 	public Field getField() {
 		return field;
 	}

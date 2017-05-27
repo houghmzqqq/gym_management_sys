@@ -51,7 +51,7 @@ public class Equipment implements Serializable {
 		this.equType = equType;
 	}
 	@ManyToOne(targetEntity=EquType.class)
-	@JoinColumn(name="equ_type_id",nullable=false)
+	@JoinColumn(name="equ_type_id",nullable=true)
 	public EquType getEquType() {
 		return equType;
 	}

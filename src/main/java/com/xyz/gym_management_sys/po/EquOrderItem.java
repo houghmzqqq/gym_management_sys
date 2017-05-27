@@ -14,8 +14,6 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 public class EquOrderItem implements Serializable {
 	private int equOrderItemId;
-//	private int equOrderId;
-//	private int equId;
 	private int equBreakCount;
 	private int equCount;
 	private float equCompensation;
@@ -59,18 +57,6 @@ public class EquOrderItem implements Serializable {
 	public void setEquOrderItemId(int equOrderItemId) {
 		this.equOrderItemId = equOrderItemId;
 	}
-//	public int getEquOrderId() {
-//		return equOrderId;
-//	}
-//	public void setEquOrderId(int equOrderId) {
-//		this.equOrderId = equOrderId;
-//	}
-//	public int getEquId() {
-//		return equId;
-//	}
-//	public void setEquId(int equId) {
-//		this.equId = equId;
-//	}
 	@Column(name="equ_break_count")
 	public int getEquBreakCount() {
 		return equBreakCount;

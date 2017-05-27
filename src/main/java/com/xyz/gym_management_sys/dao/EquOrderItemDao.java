@@ -3,6 +3,7 @@ package com.xyz.gym_management_sys.dao;
 import java.util.List;
 
 import com.xyz.gym_management_sys.po.EquOrderItem;
+import com.xyz.gym_management_sys.po.Equipment;
 
 public interface EquOrderItemDao 
 {
@@ -18,4 +19,17 @@ public interface EquOrderItemDao
 	 *@return List<EquOrderItem> 器材订单项实例集合
 	 */
 	public List<EquOrderItem> getEquOrderItemByEquOrderId(int equOrderId);
+	
+	/**
+	 *通过器材查询器材订单项
+	 *@param name Equipment 器材实例
+	 *@return List<EquOrderItem> 器材订单项实例集合
+	 */
+	public List<EquOrderItem> getEquOrderItemByEqu(Equipment equipment);
+	
+	/**
+	 *更新器材订单项
+	 *@param name EquOrderItem 器材订单项实例
+	 */
+	public void updateEquOrderItem(EquOrderItem equOrderItem);
 }

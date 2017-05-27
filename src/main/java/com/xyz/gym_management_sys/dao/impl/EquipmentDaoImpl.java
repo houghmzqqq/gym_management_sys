@@ -14,6 +14,7 @@ import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.xyz.gym_management_sys.dao.EquipmentDao;
+import com.xyz.gym_management_sys.po.EquType;
 import com.xyz.gym_management_sys.po.Equipment;
 
 @Repository
@@ -34,17 +35,16 @@ public class EquipmentDaoImpl implements EquipmentDao {
 	}
 
 
-	public void deleteEquipment(int equId) {
+	public void deleteEquipment(Equipment equipment) {
 		// TODO Auto-generated method stub
 		
-		Equipment equipment = hibernateTemplate.get(Equipment.class, equId);
 		hibernateTemplate.delete(equipment);
 	}
 
 	public void updateEquipment(Equipment equipment) {
 		// TODO Auto-generated method stub
 
-		hibernateTemplate.update(equipment);
+		hibernateTemplate.merge(equipment);
 	}
 
 	public Equipment getEquipmentById(int equId) {
@@ -54,10 +54,10 @@ public class EquipmentDaoImpl implements EquipmentDao {
 		return equipment;
 	}
 
-	public List<Equipment> getEquipmentsByEquTypeId(int equTypeId) {
+	public List<Equipment> getEquipmentsByEquType(EquType equType) {
 		// TODO Auto-generated method stub
 		
-		List<Equipment> equipments = (List<Equipment>) hibernateTemplate.find("from Equipment equ where equ.equType.equTypeId=?", equTypeId);
+		List<Equipment> equipments = (List<Equipment>) hibernateTemplate.find("from Equipment equ where equ.equType=?", equType);
 		return equipments;
 	}
 

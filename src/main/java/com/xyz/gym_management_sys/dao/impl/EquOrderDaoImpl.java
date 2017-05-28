@@ -36,11 +36,11 @@ public class EquOrderDaoImpl implements EquOrderDao {
 		return hibernateTemplate.get(EquOrder.class, equOrderId);
 	}
 
-	public List<EquOrder> getEquOrderByUser(User user) {
+	public List<EquOrder> getEquOrderByUserId(int userId) {
 		// TODO Auto-generated method stub
 		
-		String hql = "from EquOrder order where order.user=?";
-		return (List<EquOrder>) hibernateTemplate.find(hql, user);
+		String hql = "from EquOrder order where order.user.userId=?";
+		return (List<EquOrder>) hibernateTemplate.find(hql, userId);
 	}
 
 	public List<EquOrder> getPageEquOrder(int startRow, int rowCount) {
@@ -54,6 +54,12 @@ public class EquOrderDaoImpl implements EquOrderDao {
 		// TODO Auto-generated method stub
 		
 		hibernateTemplate.merge(equOrder);
+	}
+
+	public void updateEquOrder(EquOrder equOrder) {
+		// TODO Auto-generated method stub
+		
+		hibernateTemplate.update(equOrder);
 	}
 
 }

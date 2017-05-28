@@ -32,7 +32,7 @@ public class MatchOrderItem implements Serializable {
 	}
 
 	@OneToOne(targetEntity=EquOrder.class)
-	@JoinColumn(name="equ_order_id",nullable=false)
+	@JoinColumn(name="equ_order_id",nullable=true)
 	public EquOrder getEquOrder() {
 		return equOrder;
 	}
@@ -41,7 +41,7 @@ public class MatchOrderItem implements Serializable {
 	}
 
 	@OneToOne(targetEntity=FieldOrder.class)
-	@JoinColumn(name="field_order_id",nullable=false)
+	@JoinColumn(name="field_order_id",nullable=true)
 	public FieldOrder getFieldOrder() {
 		return fieldOrder;
 	}

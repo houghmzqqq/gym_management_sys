@@ -8,6 +8,7 @@ import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.xyz.gym_management_sys.dao.EquOrderItemDao;
+import com.xyz.gym_management_sys.po.EquOrder;
 import com.xyz.gym_management_sys.po.EquOrderItem;
 import com.xyz.gym_management_sys.po.Equipment;
 
@@ -48,4 +49,23 @@ public class EquOrderItemDaoImpl implements EquOrderItemDao {
 		hibernateTemplate.saveOrUpdate(equOrderItem);
 	}
 
+	public List<EquOrderItem> getEquOrderItemByEquOrder(EquOrder equOrder) {
+		// TODO Auto-generated method stub
+		
+		String hql = "from EquOrderItem item where item.equOrder=?";
+		return (List<EquOrderItem>) hibernateTemplate.find(hql, equOrder);
+	}
+
+	public void deleteEquOrderItem(EquOrderItem equOrderItem) {
+		// TODO Auto-generated method stub
+		
+		hibernateTemplate.delete(equOrderItem);
+	}
+
+	public EquOrderItem getEquOrderItemByEquOrderItemId(int equOrderItemId) {
+		// TODO Auto-generated method stub
+		
+//		String hql = "from EquOrderItem item where item.equOrderItemId=?";
+		return hibernateTemplate.get(EquOrderItem.class, equOrderItemId);
+	}
 }

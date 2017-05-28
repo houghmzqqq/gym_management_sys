@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 import javax.annotation.Resource;
 
+import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,8 @@ public class EquipmentDaoImpl implements EquipmentDao {
 
 	public void updateEquipment(Equipment equipment) {
 		// TODO Auto-generated method stub
-
+		
+//		hibernateTemplate.update(equipment, LockMode.UPGRADE);
 		hibernateTemplate.saveOrUpdate(equipment);
 	}
 

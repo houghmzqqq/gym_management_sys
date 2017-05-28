@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.xyz.gym_management_sys.po.EquOrder;
 import com.xyz.gym_management_sys.po.User;
+import com.xyz.gym_management_sys.vo.EquOrderVO;
 
 public interface EquOrderDao 
 {
@@ -38,7 +39,7 @@ public interface EquOrderDao
 	 *@param name userId 用户编号
 	 *@return List<EquOrder> 器材订单实例集合
 	 */
-	public List<EquOrder> getEquOrderByUser(User user);
+	public List<EquOrder> getEquOrderByUserId(int userid);
 	
 	/**
 	 *获取分页中显示的器材订单
@@ -47,5 +48,11 @@ public interface EquOrderDao
 	 *@return List<EquOrder> 器材订单实例集合
 	 */
 	public List<EquOrder> getPageEquOrder(int startRow,int rowCount);
+
+	/**
+	 *更新器材订单
+	 *@param name EquOrder 器材订单实例
+	 */
+	public void updateEquOrder(EquOrder equOrder);
 	
 }

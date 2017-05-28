@@ -2,10 +2,41 @@
 <mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://dozer.sourceforge.net  
        http://dozer.sourceforge.net/schema/beanmapping.xsd">
-
+       
+	<!-- 器材 -->
 	<mapping>
 		<class-a>com.xyz.gym_management_sys.po.Equipment</class-a>
 		<class-b>com.xyz.gym_management_sys.vo.EquipmentVO</class-b>
 	</mapping>
+	<mapping>
+		<class-a>com.xyz.gym_management_sys.po.EquType</class-a>
+		<class-b>com.xyz.gym_management_sys.vo.EquTypeVO</class-b>
+	</mapping>
+	<mapping>
+		<class-a>com.xyz.gym_management_sys.po.EquOrder</class-a>
+		<class-b>com.xyz.gym_management_sys.vo.EquOrderVO</class-b>
+	</mapping>
+	<mapping>
+		<class-a>com.xyz.gym_management_sys.po.EquOrderItem</class-a>
+		<class-b>com.xyz.gym_management_sys.vo.EquOrderItemVO</class-b>
+	</mapping>
+	
+	<!-- 场地 -->
+	<mapping>
+		<class-a>com.xyz.gym_management_sys.po.Field</class-a>
+		<class-b>com.xyz.gym_management_sys.vo.FieldVO</class-b>
+	</mapping>
+	<!-- <mapping>
+		<class-a>com.xyz.gym_management_sys.po.FieldType</class-a>
+		<class-b>com.xyz.gym_management_sys.vo.FieldTypeVO</class-b>
+	</mapping>
+	<mapping>
+		<class-a>com.xyz.gym_management_sys.po.FieltOrder</class-a>
+		<class-b>com.xyz.gym_management_sys.vo.FieltOrderVO</class-b>
+	</mapping>
+	<mapping>
+		<class-a>com.xyz.gym_management_sys.po.FieldOrderItem</class-a>
+		<class-b>com.xyz.gym_management_sys.vo.FieldOrderItemVO</class-b> 
+	</mapping> -->
 	
 </mappings>  

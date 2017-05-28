@@ -104,11 +104,13 @@ public class EquipmentServiceImpl implements EquipmentService {
 		// TODO Auto-generated method stub
 		
 		Equipment equipment = equipmentDao.getEquipmentById(equId);
+
+		//所有与该器材匹配的器材订单项，将其器材外键设为null
 		List<EquOrderItem> equOrderItems = equOrderItemDao.getEquOrderItemByEqu(equipment);
 		for(EquOrderItem equOrderItem : equOrderItems)
 		{
 			equOrderItem.setEquipment(null);
-			equOrderItemDao.updateEquOrderItem(equOrderItem);
+			equOrderItemDao.mergeEquOrderItem(equOrderItem);
 		}
 		
 		equipmentDao.deleteEquipment(equipment);

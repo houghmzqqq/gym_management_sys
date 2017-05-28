@@ -34,8 +34,8 @@ public class EquipmentServiceTest
 	{
 //		testAdd();
 //		test02();
-//		test03();
-		test04();
+		test03();
+//		test04();
 	}
 	
 	public void testAdd()
@@ -60,7 +60,7 @@ public class EquipmentServiceTest
 	
 	public void test03()
 	{
-		equipmentService.removeEqu(20);
+		equipmentService.removeEqu(18);
 	}
 	
 	public void test04()

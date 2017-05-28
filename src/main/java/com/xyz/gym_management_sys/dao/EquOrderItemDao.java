@@ -28,6 +28,12 @@ public interface EquOrderItemDao
 	public List<EquOrderItem> getEquOrderItemByEqu(Equipment equipment);
 	
 	/**
+	 *合并器材订单项
+	 *@param name EquOrderItem 器材订单项实例
+	 */
+	public void mergeEquOrderItem(EquOrderItem equOrderItem);
+	
+	/**
 	 *更新器材订单项
 	 *@param name EquOrderItem 器材订单项实例
 	 */

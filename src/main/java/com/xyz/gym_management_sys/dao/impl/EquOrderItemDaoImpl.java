@@ -36,10 +36,16 @@ public class EquOrderItemDaoImpl implements EquOrderItemDao {
 		return (List<EquOrderItem>) hibernateTemplate.find(hql, equipment);
 	}
 
+	public void mergeEquOrderItem(EquOrderItem equOrderItem) {
+		// TODO Auto-generated method stub
+		
+		hibernateTemplate.merge(equOrderItem);
+	}
+
 	public void updateEquOrderItem(EquOrderItem equOrderItem) {
 		// TODO Auto-generated method stub
 		
-		hibernateTemplate.update(equOrderItem);
+		hibernateTemplate.saveOrUpdate(equOrderItem);
 	}
 
 }

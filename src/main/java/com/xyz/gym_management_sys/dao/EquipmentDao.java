@@ -26,6 +26,12 @@ public interface EquipmentDao
 	public void updateEquipment(Equipment equipment);
 	
 	/**
+	 *合并器材信息
+	 *@param name Equipment 器材实例
+	 */
+	public void mergeEquipment(Equipment equipment);
+	
+	/**
 	 *根据器材编号查找器材
 	 *@param name equId 器材编号
 	 *@return Equipment 器材室里

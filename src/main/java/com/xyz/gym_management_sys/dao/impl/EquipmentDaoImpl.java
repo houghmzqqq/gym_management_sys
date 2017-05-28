@@ -44,7 +44,7 @@ public class EquipmentDaoImpl implements EquipmentDao {
 	public void updateEquipment(Equipment equipment) {
 		// TODO Auto-generated method stub
 
-		hibernateTemplate.merge(equipment);
+		hibernateTemplate.saveOrUpdate(equipment);
 	}
 
 	public Equipment getEquipmentById(int equId) {
@@ -73,5 +73,12 @@ public class EquipmentDaoImpl implements EquipmentDao {
 		
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Equipment.class);
 		return (List<Equipment>) hibernateTemplate.findByCriteria(detachedCriteria, startRow, rowOfEachPage);
+	}
+
+
+	public void mergeEquipment(Equipment equipment) {
+		// TODO Auto-generated method stub
+		
+		hibernateTemplate.merge(equipment);
 	}	
 }

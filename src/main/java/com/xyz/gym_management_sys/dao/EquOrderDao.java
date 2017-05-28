@@ -32,4 +32,12 @@ public interface EquOrderDao
 	 */
 	public List<EquOrder> getEquOrderByUserId(int userId);
 	
+	/**
+	 *获取分页中显示的器材订单
+	 *@param name startRow 开始行
+	 *@param name rowCount 每一页的行数
+	 *@return List<EquOrder> 器材订单实例集合
+	 */
+	public List<EquOrder> getPageEquOrder(int startRow,int rowCount);
+	
 }

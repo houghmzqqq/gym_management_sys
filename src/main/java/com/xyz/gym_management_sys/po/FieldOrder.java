@@ -35,7 +35,7 @@ public class FieldOrder implements Serializable {
 		this.user = user;
 	}
 	@ManyToOne(targetEntity=User.class)
-	@JoinColumn(name="user_id",nullable=false)
+	@JoinColumn(name="user_id",nullable=true)
 	public User getUser() {
 		return user;
 	}

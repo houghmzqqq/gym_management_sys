@@ -25,8 +25,22 @@ public class FieldOrderItem implements Serializable {
 	private Field field;
 	private FieldOrder fieldOrder;
 	
+	public FieldOrderItem() {
+		super();
+	}
+	public FieldOrderItem(Boolean fieldIsBroken, float fieldCompensation, Timestamp fieldBorrowDate,
+			Timestamp fieldReturnDate, int fieldBorrowTime, Field field, FieldOrder fieldOrder) {
+		super();
+		this.fieldIsBroken = fieldIsBroken;
+		this.fieldCompensation = fieldCompensation;
+		this.fieldBorrowDate = fieldBorrowDate;
+		this.fieldReturnDate = fieldReturnDate;
+		this.fieldBorrowTime = fieldBorrowTime;
+		this.field = field;
+		this.fieldOrder = fieldOrder;
+	}
 	@ManyToOne(targetEntity=Field.class)
-	@JoinColumn(name="field_id",nullable=false)
+	@JoinColumn(name="field_id",nullable=true)
 	public Field getField() {
 		return field;
 	}

@@ -14,6 +14,14 @@ public class FieldType implements Serializable {
 	private int fieldTypeId;
 	private String fieldTypeName;
 	
+	
+	public FieldType() {
+		super();
+	}
+	public FieldType(String fieldTypeName) {
+		super();
+		this.fieldTypeName = fieldTypeName;
+	}
 	@Id @Column(name="field_type_id")
 	@GeneratedValue(generator="id")
 	@GenericGenerator(name="id", strategy="increment")

@@ -27,6 +27,14 @@
 	<!-- AOP -->
 	<aop:aspectj-autoproxy />
 	
+	<bean id="dozerBeanMapper" class="org.dozer.DozerBeanMapper">
+		<property name="mappingFiles">
+			<list>
+				<value>dozerBeanMapping.xml</value>
+			</list>
+		</property>
+	</bean>
+	
 	<!-- 数据源配置 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}"/>

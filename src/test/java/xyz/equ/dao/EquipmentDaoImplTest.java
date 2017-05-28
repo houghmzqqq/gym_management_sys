@@ -34,9 +34,10 @@ public class EquipmentDaoImplTest
 	public void testAll()
 	{
 //		testAdd();
-//		testDel();
+		testDel();
 //		testUpdate();
 		test04();
+//		test05();
 	}
 	
 	public void testAdd()
@@ -51,7 +52,8 @@ public class EquipmentDaoImplTest
 	
 	public void testDel()
 	{
-		equipmentDao.deleteEquipment(10);
+		Equipment equipment = equipmentDao.getEquipmentById(2);
+		equipmentDao.deleteEquipment(equipment);
 	}
 	
 	public void testUpdate()
@@ -63,11 +65,20 @@ public class EquipmentDaoImplTest
 	
 	public void test04()
 	{
-		List<Equipment> equipments = equipmentDao.getEquipmentsByEquTypeId(1);
+		List<Equipment> equipments = equipmentDao.getEquipmentsByEquType(equTypeDao.getEquTypeById(1));
 		
 		for(Equipment equipment : equipments)
 		{
-			System.out.println(equipment);
+			System.out.println("allEquipment----"+equipment);
+		}
+	}
+	
+	public void test05()
+	{
+		List<Equipment> equipments = equipmentDao.getPageEquipment(3, 5);
+		for(Equipment equipment : equipments)
+		{
+			System.out.println("pageEquipment---"+equipment.getEquId());
 		}
 	}
 }

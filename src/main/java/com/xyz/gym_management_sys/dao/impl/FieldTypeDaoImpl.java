@@ -22,10 +22,10 @@ public class FieldTypeDaoImpl implements FieldTypeDao {
 		hibernateTemplate.save(fieldType);
 	}
 
-	public void deleteFieldType(int fieldTypeId) {
+	public void deleteFieldType(FieldType fieldType) {
 		// TODO Auto-generated method stub
 		
-		hibernateTemplate.delete(getFieldTypeById(fieldTypeId));
+		hibernateTemplate.delete(fieldType);
 	}
 
 	public FieldType getFieldTypeById(int fieldTypeId) {
@@ -39,6 +39,12 @@ public class FieldTypeDaoImpl implements FieldTypeDao {
 		
 		String hql = "from FieldType";
 		return (List<FieldType>) hibernateTemplate.find(hql);
+	}
+
+	public void updateFieldType(FieldType fieldType) {
+		// TODO Auto-generated method stub
+		
+		hibernateTemplate.update(fieldType);
 	}
 
 }

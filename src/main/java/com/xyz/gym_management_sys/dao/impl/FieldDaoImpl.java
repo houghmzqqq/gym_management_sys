@@ -23,10 +23,10 @@ public class FieldDaoImpl implements FieldDao {
 		hibernateTemplate.save(field);
 	}
 
-	public void deleteField(int fieldId) {
+	public void deleteField(Field field) {
 		// TODO Auto-generated method stub
 		
-		hibernateTemplate.delete(getFieldById(fieldId));
+		hibernateTemplate.delete(field);
 	}
 
 	public void updateField(Field field) {
@@ -60,6 +60,12 @@ public class FieldDaoImpl implements FieldDao {
 		
 		DetachedCriteria criteria = DetachedCriteria.forClass(Field.class);
 		return (List<Field>) hibernateTemplate.findByCriteria(criteria,startRow,rowOfEachPage);
+	}
+
+	public void mergeField(Field field) {
+		// TODO Auto-generated method stub
+		
+		hibernateTemplate.merge(field);
 	}
 
 }

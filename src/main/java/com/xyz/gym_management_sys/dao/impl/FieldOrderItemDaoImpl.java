@@ -29,4 +29,29 @@ public class FieldOrderItemDaoImpl implements FieldOrderItemDao {
 		return (List<FieldOrderItem>) hibernateTemplate.find(hql, fieldOrderId);
 	}
 
+	public void deleteFieldOrderItem(FieldOrderItem fieldOrderItem) {
+		// TODO Auto-generated method stub
+		
+		hibernateTemplate.delete(fieldOrderItem);
+	}
+
+	public void updateFieldOrderItem(FieldOrderItem fieldOrderItem) {
+		// TODO Auto-generated method stub
+		
+		hibernateTemplate.update(fieldOrderItem);
+	}
+
+	public void mergeFieldOrderItem(FieldOrderItem fieldOrderItem) {
+		// TODO Auto-generated method stub
+		
+		hibernateTemplate.merge(fieldOrderItem);
+	}
+
+	public List<FieldOrderItem> getFieldOrderItemByFieldId(int fieldId) {
+		// TODO Auto-generated method stub
+		
+		String hql = "from FieldOrderItem fItem where fItem.field.fieldId=?";
+		return (List<FieldOrderItem>) hibernateTemplate.find(hql, fieldId);
+	}
+
 }

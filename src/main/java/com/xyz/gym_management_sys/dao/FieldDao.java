@@ -17,13 +17,19 @@ public interface FieldDao
 	 *删除场地
 	 *@param name fieldId 场地编号
 	 */
-	public void deleteField(int fieldId);
+	public void deleteField(Field field);
 	
 	/**
 	 *更新/修改场地信息
 	 *@param name Field 场地实例
 	 */
 	public void updateField(Field field);
+	
+	/**
+	 *合并场地
+	 *@param name Field 场地实例
+	 */
+	public void mergeField(Field field);
 	
 	/**
 	 *根据场地编号查找场地

@@ -17,7 +17,19 @@ public interface FieldOrderDao
 	 *删除场地订单
 	 *@param name fieldOrderId 场地订单编号
 	 */
-	public void deleteFieldOrder(int fieldOrderId);
+	public void deleteFieldOrder(FieldOrder fieldOrder);
+	
+	/**
+	 *跟新场地订单
+	 *@param name FieldOrder 场地订单实例
+	 */
+	public void updateFieldOrder(FieldOrder fieldOrder);
+	
+	/**
+	 *合并场地订单
+	 *@param name FieldOrder 场地订单实例
+	 */
+	public void mergeFieldOrder(FieldOrder fieldOrder);
 	
 	/**
 	 *根据场地订单编号查找场地
@@ -39,5 +51,5 @@ public interface FieldOrderDao
 	 *@param name rowCount 每一页的行数
 	 *@return List<FieldOrder> 场地订单实例集合
 	 */
-	public List<FieldOrder> getPageFieldOrder(int startRow,int rowCount);
+	public List<FieldOrder> getPageFieldOrder(int startRow,int rowOfEachPage);
 }

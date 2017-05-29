@@ -12,7 +12,21 @@ public class EquOrderItemVO implements Serializable
 	private int equBreakCount;
 	private int equCount;
 	private float equCompensation;
+	private float itemSum;//订单项租金
+	private float itemDeposit;//订单项押金
 	
+	public float getItemSum() {
+		return itemSum;
+	}
+	public void setItemSum(float itemSum) {
+		this.itemSum = itemSum;
+	}
+	public float getItemDeposit() {
+		return itemDeposit;
+	}
+	public void setItemDeposit(float itemDeposit) {
+		this.itemDeposit = itemDeposit;
+	}
 	public int getEquOrderItemId() {
 		return equOrderItemId;
 	}

@@ -61,4 +61,11 @@ public class FieldOrderDaoImpl implements FieldOrderDao {
 		hibernateTemplate.merge(fieldOrder);
 	}
 
+	public List<FieldOrder> getAllFieldOrder() {
+		// TODO Auto-generated method stub
+		
+		String hql = "from FieldOrder fOrder";
+		return (List<FieldOrder>) hibernateTemplate.find(hql);
+	}
+
 }

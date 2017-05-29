@@ -47,6 +47,9 @@ public class EquOrderItemServiceImpl implements EquOrderItemService {
 			{
 				equOrderItemVO.setEquId(equOrderItem.getEquipment().getEquId());
 				equOrderItemVO.setEquName(equOrderItem.getEquipment().getEquName());
+				//设置租金和押金
+				equOrderItemVO.setItemDeposit(equOrderItem.getEquipment().getEquDeposit()*equOrderItem.getEquCount());
+				equOrderItemVO.setItemSum(equOrderItem.getEquipment().getEquBorrowUnitvaluent()*equOrderItem.getEquCount());
 			}
 			
 			equOrderItemVOs.add(equOrderItemVO);

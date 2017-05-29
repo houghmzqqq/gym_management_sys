@@ -27,9 +27,10 @@ public class FieldTypeDaoImplTest
 	@Rollback(false)
 	public void testAll()
 	{
-		test01();
-		test02();
-		test03();
+//		test01();
+//		test02();
+//		test03();
+		test04();
 	}
 	
 	public void test01()
@@ -45,7 +46,7 @@ public class FieldTypeDaoImplTest
 	
 	public void test02()
 	{
-		fieldTypeDao.deleteFieldType(5);
+//		fieldTypeDao.deleteFieldType(5);
 	}
 	
 	public void test03()
@@ -58,5 +59,12 @@ public class FieldTypeDaoImplTest
 		{
 			System.out.println("getAll------"+fieldType2.getFieldTypeName());
 		}
+	}
+	
+	public void test04()
+	{
+		FieldType fieldType = new FieldType("羽毛球场1号场");
+		fieldType.setFieldTypeId(2);
+		fieldTypeDao.updateFieldType(fieldType);
 	}
 }

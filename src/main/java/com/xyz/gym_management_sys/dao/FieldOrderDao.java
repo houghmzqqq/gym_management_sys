@@ -46,6 +46,12 @@ public interface FieldOrderDao
 	public List<FieldOrder> getFieldOrderByUserId(int userId);
 	
 	/**
+	 *查找所有场地订单
+	 *@return List<FieldOrder> 场地订单实例集合
+	 */
+	public List<FieldOrder> getAllFieldOrder();
+	
+	/**
 	 *获取分页中显示的场地订单
 	 *@param name startRow 开始行
 	 *@param name rowCount 每一页的行数

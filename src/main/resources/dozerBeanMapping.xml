@@ -26,17 +26,17 @@
 		<class-a>com.xyz.gym_management_sys.po.Field</class-a>
 		<class-b>com.xyz.gym_management_sys.vo.FieldVO</class-b>
 	</mapping>
-	<!-- <mapping>
+	<mapping>
 		<class-a>com.xyz.gym_management_sys.po.FieldType</class-a>
 		<class-b>com.xyz.gym_management_sys.vo.FieldTypeVO</class-b>
 	</mapping>
 	<mapping>
-		<class-a>com.xyz.gym_management_sys.po.FieltOrder</class-a>
-		<class-b>com.xyz.gym_management_sys.vo.FieltOrderVO</class-b>
+		<class-a>com.xyz.gym_management_sys.po.FieldOrder</class-a>
+		<class-b>com.xyz.gym_management_sys.vo.FieldOrderVO</class-b>
 	</mapping>
 	<mapping>
 		<class-a>com.xyz.gym_management_sys.po.FieldOrderItem</class-a>
 		<class-b>com.xyz.gym_management_sys.vo.FieldOrderItemVO</class-b> 
-	</mapping> -->
+	</mapping>
 	
 </mappings>  

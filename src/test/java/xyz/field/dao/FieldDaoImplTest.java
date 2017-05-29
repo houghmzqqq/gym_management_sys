@@ -50,7 +50,7 @@ public class FieldDaoImplTest
 	
 	public void test02()
 	{
-		fieldDao.deleteField(5);
+//		fieldDao.deleteField(5);
 	}
 	
 	public void test03()

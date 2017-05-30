@@ -34,6 +34,7 @@ public class FieldOrderServiceImpl implements FieldOrderService {
 	private FieldOrderVO fieldOrderVO;
 	private List<FieldOrderVO> fieldOrderVOs;
 	private FieldOrderItem fieldOrderItem;
+	private List<FieldOrderItem> fieldOrderItems;
 	
 	public void addFieldOrder(FieldOrderVO fieldOrderVO, List<FieldOrderItemVO> fieldOrderItemVOs) {
 		// TODO Auto-generated method stub
@@ -46,6 +47,7 @@ public class FieldOrderServiceImpl implements FieldOrderService {
 		{
 			fieldOrderItem = mapper.map(fieldOrderItemVO, FieldOrderItem.class);
 			fieldOrderItem.setField(fieldDao.getFieldById(fieldOrderItemVO.getFieldId()));
+			fieldOrderItem.setFieldOrder(fieldOrder);
 			
 			fieldOrderItemDao.addFieldOrderItem(fieldOrderItem);
 		}
@@ -55,6 +57,11 @@ public class FieldOrderServiceImpl implements FieldOrderService {
 		// TODO Auto-generated method stub
 
 		fieldOrder = fieldOrderDao.getFieldOrderById(fieldOrderId);
+		fieldOrderItems = fieldOrderItemDao.getFieldOrderItemByFieldOrderId(fieldOrderId);
+		for(FieldOrderItem fieldOrderItem : fieldOrderItems)
+		{
+			fieldOrderItemDao.deleteFieldOrderItem(fieldOrderItem);
+		}
 		//fieldOrder.setUser();
 		fieldOrderDao.deleteFieldOrder(fieldOrder);
 	}

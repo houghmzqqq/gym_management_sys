@@ -9,6 +9,7 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.stereotype.Service;
 
 import com.xyz.gym_management_sys.dao.FieldDao;
+import com.xyz.gym_management_sys.dao.FieldOrderDao;
 import com.xyz.gym_management_sys.dao.FieldOrderItemDao;
 import com.xyz.gym_management_sys.po.FieldOrderItem;
 import com.xyz.gym_management_sys.service.FieldOrderItemService;
@@ -17,6 +18,8 @@ import com.xyz.gym_management_sys.vo.FieldOrderItemVO;
 @Service
 public class FieldOrderItemServiceImpl implements FieldOrderItemService {
 
+	@Resource
+	private FieldOrderDao fieldOrderDao;
 	@Resource
 	private FieldOrderItemDao fieldOrderItemDao;
 	@Resource
@@ -56,6 +59,11 @@ public class FieldOrderItemServiceImpl implements FieldOrderItemService {
 		// TODO Auto-generated method stub
 		
 		fieldOrderItem = mapper.map(fieldOrderItemVO, FieldOrderItem.class);
+		fieldOrderItem.setFieldOrder(fieldOrderDao.getFieldOrderById(fieldOrderItemVO.getFieldOrderId()));
+		if(fieldOrderItemVO.getFieldId() != 0)
+		{
+			fieldOrderItem.setField(fieldDao.getFieldById(fieldOrderItemVO.getFieldId()));
+		}
 		fieldOrderItemDao.updateFieldOrderItem(fieldOrderItem);
 	}
 

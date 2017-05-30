@@ -38,7 +38,7 @@ public class FieldServiceImpl implements FieldService {
 		// TODO Auto-generated method stub
 
 		field = mapper.map(fieldVO, Field.class);
-		field.setFieldType(fieldTypeDao.getFieldTypeById(fieldVO.getFieldId()));
+		field.setFieldType(fieldTypeDao.getFieldTypeById(fieldVO.getFieldTypeId()));
 		fieldDao.addField(field);
 	}
 
@@ -61,7 +61,7 @@ public class FieldServiceImpl implements FieldService {
 		// TODO Auto-generated method stub
 
 		field = mapper.map(fieldVO, Field.class);
-		field.setFieldType(fieldTypeDao.getFieldTypeById(fieldVO.getFieldId()));
+		field.setFieldType(fieldTypeDao.getFieldTypeById(fieldVO.getFieldTypeId()));
 		fieldDao.updateField(field);
 	}
 

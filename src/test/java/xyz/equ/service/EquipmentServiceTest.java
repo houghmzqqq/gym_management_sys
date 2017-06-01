@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.xyz.gym_management_sys.dao.EquipmentDao;
-import com.xyz.gym_management_sys.po.Equipment;
 import com.xyz.gym_management_sys.service.EquipmentService;
 import com.xyz.gym_management_sys.vo.EquipmentVO;
 
@@ -28,8 +27,8 @@ public class EquipmentServiceTest
 	private EquipmentDao equipmentDao;
 	
 	@Test
-	@Transactional
-	@Rollback(false)
+//	@Transactional
+//	@Rollback(true)
 	public void testAll()
 	{
 //		testAdd();
@@ -60,7 +59,7 @@ public class EquipmentServiceTest
 	
 	public void test03()
 	{
-		equipmentService.removeEqu(18);
+		equipmentService.removeEqu(16);
 	}
 	
 	public void test04()

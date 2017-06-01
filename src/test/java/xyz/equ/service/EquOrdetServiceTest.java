@@ -59,7 +59,7 @@ public class EquOrdetServiceTest
 		equCounts.add(5);
 		equCounts.add(9);
 		
-		equOrderService.addEquOrder(equOrderVO, equIds, equCounts);
+//		equOrderService.addEquOrder(equOrderVO, equIds, equCounts);
 	}
 	
 	public void test02()

@@ -39,7 +39,8 @@ public class EquipmentDaoImpl implements EquipmentDao {
 	public void deleteEquipment(Equipment equipment) {
 		// TODO Auto-generated method stub
 		
-		hibernateTemplate.delete(equipment);
+		hibernateTemplate.delete(equipment, LockMode.UPGRADE);
+//		hibernateTemplate.delete(equipment);
 	}
 
 	public void updateEquipment(Equipment equipment) {

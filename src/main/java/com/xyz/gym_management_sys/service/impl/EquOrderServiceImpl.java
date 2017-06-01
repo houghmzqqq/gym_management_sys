@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import com.xyz.gym_management_sys.dao.EquOrderDao;
 import com.xyz.gym_management_sys.dao.EquOrderItemDao;
@@ -16,6 +15,7 @@ import com.xyz.gym_management_sys.po.EquOrder;
 import com.xyz.gym_management_sys.po.EquOrderItem;
 import com.xyz.gym_management_sys.po.Equipment;
 import com.xyz.gym_management_sys.service.EquOrderService;
+import com.xyz.gym_management_sys.vo.EquCartDetailVO;
 import com.xyz.gym_management_sys.vo.EquOrderVO;
 
 @Service
@@ -41,7 +41,7 @@ public class EquOrderServiceImpl implements EquOrderService {
 	private List<EquOrderVO> equOrderVOs;
 	private Equipment equipment;
 	
-	public void addEquOrder(EquOrderVO equOrderVO, List<Integer> equIds, List<Integer> equCounts) {
+	public void addEquOrder(EquOrderVO equOrderVO, List<EquCartDetailVO> equCartDetailVOs) {
 		// TODO Auto-generated method stub
 		
 		equOrder = mapper.map(equOrderVO, EquOrder.class);
@@ -49,14 +49,14 @@ public class EquOrderServiceImpl implements EquOrderService {
 		equOrderDao.addEquOrder(equOrder);
 		
 		//生成订单项
-		for(int i=0;i<equIds.size();i++)
+		for(EquCartDetailVO equCartDetailVO : equCartDetailVOs)
 		{
-			equipment = equipmentDao.getEquipmentById(equIds.get(i));
+			equipment = equipmentDao.getEquipmentById(equCartDetailVO.getEquId());
 			equOrderItem = new EquOrderItem();
 			equOrderItem.setEquOrder(equOrder);
 			equOrderItem.setEquipment(equipment);
 			equOrderItem.setEquBreakCount(0);
-			equOrderItem.setEquCount(equCounts.get(i));
+			equOrderItem.setEquCount(equCartDetailVO.getEquCount());
 			equOrderItem.setEquCompensation(0);
 			
 			equOrderItemDao.addEquOrderItem(equOrderItem);

@@ -2,8 +2,10 @@ package com.xyz.gym_management_sys.service;
 
 import java.util.List;
 
+import org.apache.commons.collections.set.ListOrderedSet;
 import org.springframework.web.servlet.config.VelocityConfigurerBeanDefinitionParser;
 
+import com.xyz.gym_management_sys.vo.EquCartDetailVO;
 import com.xyz.gym_management_sys.vo.EquOrderVO;
 
 public interface EquOrderService 
@@ -14,7 +16,7 @@ public interface EquOrderService
 	 *@param name equIds 器材编号集合
 	 *@param name equCounts 器材数量集合
 	 */
-	public void addEquOrder(EquOrderVO equOrderVO,List<Integer> equIds,List<Integer> equCounts);
+	public void addEquOrder(EquOrderVO equOrderVO,List<EquCartDetailVO> equCartDetailVOs);
 	
 	/**
 	 *删除器材订单

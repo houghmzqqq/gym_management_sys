@@ -2,6 +2,7 @@ package com.xyz.gym_management_sys.service;
 
 import java.util.List;
 
+import com.xyz.gym_management_sys.vo.FieldCartDetailVO;
 import com.xyz.gym_management_sys.vo.FieldOrderItemVO;
 import com.xyz.gym_management_sys.vo.FieldOrderVO;
 
@@ -12,7 +13,7 @@ public interface FieldOrderService
 	 *@param name fieldOrderVO 场地订单信息实例
 	 *@param name List<FieldOrderItemVO> 场地订单项信息实例
 	 */
-	public void addFieldOrder(FieldOrderVO fieldOrderVO, List<FieldOrderItemVO> fieldOrderItemVOs);
+	public void addFieldOrder(FieldOrderVO fieldOrderVO, List<FieldCartDetailVO> fieldCartDetailVOs);
 	
 	/**
 	 *删除场地订单

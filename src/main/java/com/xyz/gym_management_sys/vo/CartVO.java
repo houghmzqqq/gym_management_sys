@@ -9,6 +9,23 @@ import org.springframework.stereotype.Component;
 public class CartVO 
 {
 	private List<EquCartDetailVO> equCartRecordVOs = new ArrayList<EquCartDetailVO>();
+	private List<FieldCartDetailVO> fieldCartRecordVOS = new ArrayList<FieldCartDetailVO>();
+
+	public List<EquCartDetailVO> getEquCartRecordVOs() {
+		return equCartRecordVOs;
+	}
+
+	public void setEquCartRecordVOs(List<EquCartDetailVO> equCartRecordVOs) {
+		this.equCartRecordVOs = equCartRecordVOs;
+	}
+
+	public List<FieldCartDetailVO> getFieldCartRecordVOS() {
+		return fieldCartRecordVOS;
+	}
+
+	public void setFieldCartRecordVOS(List<FieldCartDetailVO> fieldCartRecordVOS) {
+		this.fieldCartRecordVOS = fieldCartRecordVOS;
+	}
 
 	public List<EquCartDetailVO> getEquCartDetailVOs() {
 		return equCartRecordVOs;
@@ -20,7 +37,7 @@ public class CartVO
 
 	@Override
 	public String toString() {
-		return "CartVO [equCartDetailVOs=" + equCartRecordVOs + "]";
+		return "CartVO [equCartRecordVOs=" + equCartRecordVOs + ", fieldCartRecordVOS=" + fieldCartRecordVOS + "]";
 	}
 	
 }

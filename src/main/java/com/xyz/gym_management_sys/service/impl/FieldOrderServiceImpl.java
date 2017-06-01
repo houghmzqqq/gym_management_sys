@@ -14,6 +14,7 @@ import com.xyz.gym_management_sys.dao.FieldOrderItemDao;
 import com.xyz.gym_management_sys.po.FieldOrder;
 import com.xyz.gym_management_sys.po.FieldOrderItem;
 import com.xyz.gym_management_sys.service.FieldOrderService;
+import com.xyz.gym_management_sys.vo.FieldCartDetailVO;
 import com.xyz.gym_management_sys.vo.FieldOrderItemVO;
 import com.xyz.gym_management_sys.vo.FieldOrderVO;
 
@@ -36,17 +37,20 @@ public class FieldOrderServiceImpl implements FieldOrderService {
 	private FieldOrderItem fieldOrderItem;
 	private List<FieldOrderItem> fieldOrderItems;
 	
-	public void addFieldOrder(FieldOrderVO fieldOrderVO, List<FieldOrderItemVO> fieldOrderItemVOs) {
+	public void addFieldOrder(FieldOrderVO fieldOrderVO, List<FieldCartDetailVO> fieldCartDetailVOs) {
 		// TODO Auto-generated method stub
 
 		fieldOrder = mapper.map(fieldOrderVO, FieldOrder.class);
 		fieldOrderDao.addFieldOrder(fieldOrder);
 		
 		//增加订单项
-		for(FieldOrderItemVO fieldOrderItemVO : fieldOrderItemVOs)
+		for(FieldCartDetailVO fieldCartDetailVO : fieldCartDetailVOs)
 		{
-			fieldOrderItem = mapper.map(fieldOrderItemVO, FieldOrderItem.class);
-			fieldOrderItem.setField(fieldDao.getFieldById(fieldOrderItemVO.getFieldId()));
+			fieldOrderItem = mapper.map(fieldCartDetailVO, FieldOrderItem.class);
+			fieldOrderItem.setField(fieldDao.getFieldById(fieldCartDetailVO.getFieldId()));
+			fieldOrderItem.setFieldBorrowDate(fieldCartDetailVO.getFieldBorrowDate());
+			fieldOrderItem.setFieldReturnDate(fieldCartDetailVO.getFieldReturnDate());
+			fieldOrderItem.setFieldBorrowTime(fieldCartDetailVO.getFieldBorrowTime());
 			fieldOrderItem.setFieldOrder(fieldOrder);
 			
 			fieldOrderItemDao.addFieldOrderItem(fieldOrderItem);

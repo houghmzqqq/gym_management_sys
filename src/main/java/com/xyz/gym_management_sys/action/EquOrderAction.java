@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.expression.spel.ast.ValueRef;
 import org.springframework.stereotype.Controller;
@@ -38,7 +40,8 @@ public class EquOrderAction
 	private List<EquOrderItemVO> equOrderItemVOs;
 	
 	@RequestMapping(value="add")
-	public String addEquOrder(@CookieValue(value="equCartCookie",required=false)String equCartCookieStr,EquOrderVO equOrderVO)
+	public String addEquOrder(@CookieValue(value="equCartCookie",required=false)String equCartCookieStr,
+			HttpServletResponse response,EquOrderVO equOrderVO)
 	{
 		List<EquCartDetailVO> equCartDetailVOs = new ArrayList<EquCartDetailVO>();
 		Map<String, Class> classMap = new HashMap<String, Class>();
@@ -49,6 +52,12 @@ public class EquOrderAction
 		cartVO = (CartVO) JSONObject.toBean(jsonObject, CartVO.class,classMap);
 		equCartDetailVOs = cartVO.getEquCartDetailVOs();
 		equOrderService.addEquOrder(equOrderVO,equCartDetailVOs);
+		
+		//清空cookie中的内容
+		Cookie cookie = new Cookie("equCartCookie","");
+		cookie.setMaxAge(60*60*24*7);
+		response.addCookie(cookie);
+		
 		return null;
 	}
 	

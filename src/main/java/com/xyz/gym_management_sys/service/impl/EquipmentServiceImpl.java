@@ -11,10 +11,12 @@ import org.springframework.stereotype.Service;
 import com.xyz.gym_management_sys.dao.EquOrderItemDao;
 import com.xyz.gym_management_sys.dao.EquTypeDao;
 import com.xyz.gym_management_sys.dao.EquipmentDao;
+import com.xyz.gym_management_sys.po.DividePage;
 import com.xyz.gym_management_sys.po.EquOrderItem;
 import com.xyz.gym_management_sys.po.EquType;
 import com.xyz.gym_management_sys.po.Equipment;
 import com.xyz.gym_management_sys.service.EquipmentService;
+import com.xyz.gym_management_sys.vo.DividePageVO;
 import com.xyz.gym_management_sys.vo.EquipmentVO;
 
 @Service
@@ -31,6 +33,7 @@ public class EquipmentServiceImpl implements EquipmentService {
 	
 	List<EquipmentVO> equipmentVOs;
 	EquipmentVO equipmentVO;
+	private List<Equipment> equipments;
 	
 	public List<EquipmentVO> findAllEqu() {
 		// TODO Auto-generated method stub
@@ -49,20 +52,22 @@ public class EquipmentServiceImpl implements EquipmentService {
 		return equipmentVOs;
 	}
 
-	public List<EquipmentVO> dividePageOfEqu(int nextPage, int rowOfEachPage) {
+	public DividePageVO dividePageOfEqu(int thisPage, int rowOfEachPage) {
 		// TODO Auto-generated method stub
 
-		equipmentVOs = new ArrayList<EquipmentVO>();
-		List<Equipment> equipments = equipmentDao.getPageEquipment((nextPage*rowOfEachPage), rowOfEachPage);
+//		equipmentVOs = new ArrayList<EquipmentVO>();
+		DividePage dividePage = equipmentDao.getPageEquipment(thisPage, rowOfEachPage);
+		equipments = dividePage.getEquipments();
+		DividePageVO dividePageVO = mapper.map(dividePage, DividePageVO.class);
 		
 		for(Equipment equipment : equipments)
 		{
 			equipmentVO = mapper.map(equipment, EquipmentVO.class);
 			setOtherProperty(equipment);
 			
-			equipmentVOs.add(equipmentVO);
+			dividePageVO.getEquipmentVOs().add(equipmentVO);
 		}
-		return equipmentVOs;
+		return dividePageVO;
 	}
 
 	public List<EquipmentVO> findEquByEquTypeId(int equTypeId) {
@@ -136,6 +141,23 @@ public class EquipmentServiceImpl implements EquipmentService {
 				equipment.getEquBorrowCount() + equipment.getEquRepairCount() +
 				equipment.getEquBrokenCount() + equipment.getEquDiscardCount();
 		equipmentVO.setEquTotalCount(equTotalCount);
+	}
+
+	public DividePageVO dividePageOfEquByTypeId(int thisPage, int rowOfEachPage, int equTypeId) {
+		// TODO Auto-generated method stub
+		
+		DividePage dividePage = equipmentDao.getPageEquipmentByEquTypeId(thisPage, rowOfEachPage, equTypeId);
+		equipments = dividePage.getEquipments();
+		DividePageVO dividePageVO = mapper.map(dividePage, DividePageVO.class);
+		
+		for(Equipment equipment : equipments)
+		{
+			equipmentVO = mapper.map(equipment, EquipmentVO.class);
+			setOtherProperty(equipment);
+			
+			dividePageVO.getEquipmentVOs().add(equipmentVO);
+		}
+		return dividePageVO;
 	}
 
 }

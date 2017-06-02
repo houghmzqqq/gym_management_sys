@@ -35,7 +35,7 @@ public class FieldOrderAction
 	private FieldOrderService fieldOrderService;
 	@Resource
 	private FieldOrderItemService fieldOrderItemService;
-	@Resource
+	@Resource  
 	private CartVO cartVO;
 	
 	private FieldOrderVO fieldOrderVO;

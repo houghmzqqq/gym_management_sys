@@ -27,7 +27,9 @@
 	<mvc:annotation-driven/>
 	
 	<!-- 静态资源处理，入css，js，image -->
-	<mvc:resources location="/resources/" mapping="/resources/**" />
+	<mvc:resources location="/images/" mapping="/image/**" />
+	<mvc:resources location="/lib/" mapping="/lib/**" />
+	<mvc:resources location="/stylesheets/" mapping="/stylesheets/**" />
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>

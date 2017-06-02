@@ -38,5 +38,17 @@
 		<class-a>com.xyz.gym_management_sys.po.FieldOrderItem</class-a>
 		<class-b>com.xyz.gym_management_sys.vo.FieldOrderItemVO</class-b> 
 	</mapping>
+	<mapping>
+		<class-a>com.xyz.gym_management_sys.po.DividePage</class-a>
+		<class-b>com.xyz.gym_management_sys.vo.DividePageVO</class-b> 
+		<field-exclude>
+			<a>equipmentVOs</a>
+			<b>equipments</b>
+		</field-exclude>
+		<field-exclude>
+			<a>fieldVOs</a>
+			<b>fields</b>
+		</field-exclude>
+	</mapping>
 	
 </mappings>  

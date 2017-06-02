@@ -53,7 +53,7 @@ public class FieldOrderServiceTest
 		fieldOrderItemVOs.add(fieldOrderItemVO2);
 		fieldOrderItemVOs.add(fieldOrderItemVO3);
 		
-		fieldOrderService.addFieldOrder(fieldOrderVO, fieldOrderItemVOs);
+//		fieldOrderService.addFieldOrder(fieldOrderVO, fieldOrderItemVOs);
 	}
 	
 	public void test02()

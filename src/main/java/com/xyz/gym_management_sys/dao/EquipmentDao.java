@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.xyz.gym_management_sys.po.EquType;
 import com.xyz.gym_management_sys.po.Equipment;
+import com.xyz.gym_management_sys.po.DividePage;
 
 public interface EquipmentDao 
 {
@@ -52,9 +53,19 @@ public interface EquipmentDao
 	
 	/**
 	 *获取分页中显示的器材
-	 *@param name startRow 开始行
+	 *@param name thisPage 开始行
 	 *@param name rowOrEachPage 每一页的行数
-	 *@return List<Equipment> 器材实例集合
+	 *@return DividePage 分页信息实例
 	 */
-	public List<Equipment> getPageEquipment(int startRow,int rowOfEachPage);
+	public DividePage getPageEquipment(int thisPage,int rowOfEachPage);
+	
+	/**
+	 *根据器材类型进行分页查询
+	 *@param name thisPage 当前页
+	 *@param name rowOfEachPage 每一页行数
+	 *@param name equTypeId 器材类型编号
+	 *@return DividePage 分页信息实例
+	 */
+	public DividePage getPageEquipmentByEquTypeId(int thisPage,int rowOfEachPage,int equTypeId);
+	
 }

@@ -144,4 +144,12 @@ public class Equipment implements Serializable {
 	public void setEquValue(float equValue) {
 		this.equValue = equValue;
 	}
+	@Override
+	public String toString() {
+		return "Equipment [equId=" + equId + ", equName=" + equName + ", equNormalCount=" + equNormalCount
+				+ ", equReserveCount=" + equReserveCount + ", equBorrowCount=" + equBorrowCount + ", equRepairCount="
+				+ equRepairCount + ", equBrokenCount=" + equBrokenCount + ", equDiscardCount=" + equDiscardCount
+				+ ", equBorrowUnitvaluent=" + equBorrowUnitvaluent + ", equDeposit=" + equDeposit + ", equValue="
+				+ equValue + ", equType=" + equType + "]";
+	}
 }

@@ -21,7 +21,21 @@ public class DividePageVO implements Serializable
 	private int lastPage;//最后一页
 	private List<EquipmentVO> equipmentVOs = new ArrayList<EquipmentVO>();
 	private List<FieldVO> fieldVOs = new ArrayList<FieldVO>();
+	private List<EquOrderVO> equOrderVOs = new ArrayList<EquOrderVO>();
+	private List<FieldOrderVO> fieldOrderVOs = new ArrayList<FieldOrderVO>();
 	
+	public List<EquOrderVO> getEquOrderVOs() {
+		return equOrderVOs;
+	}
+	public void setEquOrderVOs(List<EquOrderVO> equOrderVOs) {
+		this.equOrderVOs = equOrderVOs;
+	}
+	public List<FieldOrderVO> getFieldOrderVOs() {
+		return fieldOrderVOs;
+	}
+	public void setFieldOrderVOs(List<FieldOrderVO> fieldOrderVOs) {
+		this.fieldOrderVOs = fieldOrderVOs;
+	}
 	public List<EquipmentVO> getEquipmentVOs() {
 		return equipmentVOs;
 	}

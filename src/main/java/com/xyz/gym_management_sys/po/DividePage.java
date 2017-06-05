@@ -20,7 +20,21 @@ public class DividePage implements Serializable
 	private int lastPage;//最后一页
 	private List<Equipment> equipments;
 	private List<Field> fields;
+	private List<EquOrder> equOrders;
+	private List<FieldOrder> fieldOrders;
 	
+	public List<EquOrder> getEquOrders() {
+		return equOrders;
+	}
+	public void setEquOrders(List<EquOrder> equOrders) {
+		this.equOrders = equOrders;
+	}
+	public List<FieldOrder> getFieldOrders() {
+		return fieldOrders;
+	}
+	public void setFieldOrders(List<FieldOrder> fieldOrders) {
+		this.fieldOrders = fieldOrders;
+	}
 	public List<Field> getFields() {
 		return fields;
 	}

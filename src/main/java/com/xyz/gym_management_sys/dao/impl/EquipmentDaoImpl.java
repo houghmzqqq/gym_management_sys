@@ -32,7 +32,6 @@ public class EquipmentDaoImpl implements EquipmentDao {
 	private DividePage dividePage;
 	
 	
-	@Transactional
 	public void addEquipment(Equipment equipment) {
 		// TODO Auto-generated method stub
 
@@ -83,8 +82,23 @@ public class EquipmentDaoImpl implements EquipmentDao {
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Equipment.class);
 		List<Equipment> equipments = (List<Equipment>) hibernateTemplate.findByCriteria(detachedCriteria,(thisPage-1)*rowOfEachPage,rowOfEachPage);
 		
-		dividePage.setNextPage(thisPage + 1);
-		dividePage.setLastPage((pageCount/5)+1);
+		
+		if((pageCount%5) != 0)
+		{
+			dividePage.setLastPage((pageCount/5)+1);
+		}
+		else
+		{
+			dividePage.setLastPage((pageCount/5));
+		}
+		if(thisPage >= dividePage.getLastPage())
+		{
+			dividePage.setNextPage(thisPage);
+		}
+		else
+		{
+			dividePage.setNextPage(thisPage + 1);
+		}
 		dividePage.setPrePage(thisPage - 1);
 		dividePage.setPageCount(pageCount);
 		dividePage.setThisPage(thisPage);
@@ -113,8 +127,22 @@ public class EquipmentDaoImpl implements EquipmentDao {
 		hql = "select count(*) from Equipment equ where equ.equType.equTypeId=?";
 		int pageCount = Integer.parseInt(String.valueOf((Long) hibernateTemplate.find(hql,equTypeId).listIterator().next()));
 		
-		dividePage.setNextPage(thisPage + 1);
-		dividePage.setLastPage((pageCount/5)+1);
+		if((pageCount%5) != 0)
+		{
+			dividePage.setLastPage((pageCount/5)+1);
+		}
+		else
+		{
+			dividePage.setLastPage((pageCount/5));
+		}
+		if(thisPage >= dividePage.getLastPage())
+		{
+			dividePage.setNextPage(thisPage);
+		}
+		else
+		{
+			dividePage.setNextPage(thisPage + 1);
+		}
 		dividePage.setPrePage(thisPage - 1);
 		dividePage.setPageCount(pageCount);
 		dividePage.setThisPage(thisPage);

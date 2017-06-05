@@ -38,15 +38,13 @@ public class EquAction
 	public String addEqu(EquipmentVO equipmentVO,Map<String, Object> model)
 	{
 		equipmentService.addEqu(equipmentVO);
-		return null;
+		return "redirect:/equ/findByTypeId?equTypeId=" + 0 + "&thisPage=" + 1;
 	}
 
 	@RequestMapping(value="/remove")
 	public String removeEqu(Integer equId,RedirectAttributes attr)
 	{
 		equipmentService.removeEqu(equId);
-//		attr.addFlashAttribute("thisPage", 1);
-//		attr.addFlashAttribute("equTypeId",0);
 		return "redirect:/equ/findByTypeId?equTypeId=" + 0 + "&thisPage=" + 1;
 	}
 	
@@ -54,7 +52,7 @@ public class EquAction
 	public String updateEqu(EquipmentVO equipmentVO)
 	{
 		equipmentService.updateEqu(equipmentVO);
-		return null;
+		return "redirect:/equ/findByTypeId?equTypeId=" + 0 + "&thisPage=" + 1;
 	}
 	
 	@RequestMapping(value="/findByTypeId")
@@ -78,22 +76,47 @@ public class EquAction
 		model.put("equTypeVOs", equTypeVOs);
 		model.put("equipmentVOs", equipmentVOs);
 		model.put("equTypeId",equTypeId);
-		return "equipment";
+		return "equ_management";
 	}
 	
-	@RequestMapping(value="/findAll")
-	public String findAllEqu(Map<String, Object> model)
-	{
-		equipmentVOs = equipmentService.findAllEqu();
-		model.put("equipmentVOs", equipmentVOs);
-		return "listEqu";
-	}
-	
-	@RequestMapping(value="/findById")
-	public String findEquById(Integer equId,Map<String, Object> model)
+	@RequestMapping(value="/turnToUpdate")
+	public String turnToUpdatePage(Integer equId,Map<String, Object> model)
 	{
 		equipmentVO = equipmentService.findEquById(equId);
+		equTypeVOs = equTypeService.findAllEquType();
 		model.put("equipmentVO", equipmentVO);
-		return null;
+		model.put("equTypeVOs", equTypeVOs);
+		return "equ_update";
+	}
+	
+	@RequestMapping(value="turnToAdd")
+	public String turnToAddPage(Model model)
+	{
+		equTypeVOs = equTypeService.findAllEquType();
+		model.addAttribute("equTypeVOs", equTypeVOs);
+		return "equ_add";
+	}
+	
+	@RequestMapping(value="/findForClient")
+	public String findForClient(Integer thisPage,Integer equTypeId,Map<String, Object> model)
+	{
+		DividePageVO dividePageVO;
+		if(equTypeId == 0)
+		{
+			dividePageVO = equipmentService.dividePageOfEqu(thisPage, 5);
+			equipmentVOs = dividePageVO.getEquipmentVOs();
+		}
+		else
+		{
+			dividePageVO = equipmentService.dividePageOfEquByTypeId(thisPage, 5, equTypeId);
+			equipmentVOs = dividePageVO.getEquipmentVOs();
+		}
+		equTypeVOs = equTypeService.findAllEquType();
+		
+		model.put("dividePage",dividePageVO);
+		model.put("equTypeVOs", equTypeVOs);
+		model.put("equipmentVOs", equipmentVOs);
+		model.put("equTypeId",equTypeId);
+		return "equ_query";
 	}
 }

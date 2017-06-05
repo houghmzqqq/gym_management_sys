@@ -29,7 +29,8 @@ public class EquCartDetailVO
 	}
 	@Override
 	public String toString() {
-		return "EquCartDetailVO [equId=" + equId + ", equCount=" + equCount +"]";
+		return "EquCartDetailVO [cartRecordId=" + cartRecordId + ", equId=" + equId + ", equCount=" + equCount + "]";
 	}
+	
 	
 }

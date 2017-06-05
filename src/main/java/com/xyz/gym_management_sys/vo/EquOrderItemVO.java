@@ -9,9 +9,9 @@ public class EquOrderItemVO implements Serializable
 	private int equOrderId;
 	private int equId;
 	private String equName;
-	private int equBreakCount;
+	private int equBreakCount = 0;
 	private int equCount;
-	private float equCompensation;
+	private float equCompensation = 0;
 	private float itemSum;//订单项租金
 	private float itemDeposit;//订单项押金
 	
@@ -68,6 +68,13 @@ public class EquOrderItemVO implements Serializable
 	}
 	public void setEquCompensation(float equCompensation) {
 		this.equCompensation = equCompensation;
+	}
+	@Override
+	public String toString() {
+		return "EquOrderItemVO [equOrderItemId=" + equOrderItemId + ", equOrderId=" + equOrderId + ", equId=" + equId
+				+ ", equName=" + equName + ", equBreakCount=" + equBreakCount + ", equCount=" + equCount
+				+ ", equCompensation=" + equCompensation + ", itemSum=" + itemSum + ", itemDeposit=" + itemDeposit
+				+ "]";
 	}
 	
 }

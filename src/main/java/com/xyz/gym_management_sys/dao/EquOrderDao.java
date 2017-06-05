@@ -2,6 +2,7 @@ package com.xyz.gym_management_sys.dao;
 
 import java.util.List;
 
+import com.xyz.gym_management_sys.po.DividePage;
 import com.xyz.gym_management_sys.po.EquOrder;
 import com.xyz.gym_management_sys.po.User;
 import com.xyz.gym_management_sys.vo.EquOrderVO;
@@ -47,7 +48,7 @@ public interface EquOrderDao
 	 *@param name rowCount 每一页的行数
 	 *@return List<EquOrder> 器材订单实例集合
 	 */
-	public List<EquOrder> getPageEquOrder(int startRow,int rowCount);
+	public DividePage getPageEquOrder(int thisPage,int rowOfEachPage);
 
 	/**
 	 *更新器材订单

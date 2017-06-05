@@ -1,22 +1,27 @@
 package com.xyz.gym_management_sys.service.impl;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.dozer.DozerBeanMapper;
+import org.hibernate.engine.transaction.jta.platform.internal.SynchronizationRegistryBasedSynchronizationStrategy;
 import org.springframework.stereotype.Service;
 
 import com.xyz.gym_management_sys.dao.EquOrderDao;
 import com.xyz.gym_management_sys.dao.EquOrderItemDao;
 import com.xyz.gym_management_sys.dao.EquipmentDao;
+import com.xyz.gym_management_sys.po.DividePage;
 import com.xyz.gym_management_sys.po.EquOrder;
 import com.xyz.gym_management_sys.po.EquOrderItem;
 import com.xyz.gym_management_sys.po.Equipment;
 import com.xyz.gym_management_sys.service.EquOrderService;
+import com.xyz.gym_management_sys.vo.DividePageVO;
 import com.xyz.gym_management_sys.vo.EquCartDetailVO;
 import com.xyz.gym_management_sys.vo.EquOrderVO;
+import com.xyz.gym_management_sys.vo.EquipmentVO;
 
 @Service
 public class EquOrderServiceImpl implements EquOrderService {
@@ -40,13 +45,15 @@ public class EquOrderServiceImpl implements EquOrderService {
 	private EquOrderVO equOrderVO;
 	private List<EquOrderVO> equOrderVOs;
 	private Equipment equipment;
+	private DividePage dividePage;
+	private DividePageVO dividePageVO;
 	
-	public void addEquOrder(EquOrderVO equOrderVO, List<EquCartDetailVO> equCartDetailVOs) {
+	public void addEquOrder(List<EquCartDetailVO> equCartDetailVOs) {
 		// TODO Auto-generated method stub
 		
-		equOrder = mapper.map(equOrderVO, EquOrder.class);
-//		equOrder.setUser(userDao.getUserById(equOrderVO.getUserId()));//查找用户，需要UserDao支持
-		equOrderDao.addEquOrder(equOrder);
+		equOrderItems = new ArrayList<EquOrderItem>();
+		float allSum = 0, allDeposit = 0;
+		equOrder = new EquOrder();
 		
 		//生成订单项
 		for(EquCartDetailVO equCartDetailVO : equCartDetailVOs)
@@ -58,7 +65,24 @@ public class EquOrderServiceImpl implements EquOrderService {
 			equOrderItem.setEquBreakCount(0);
 			equOrderItem.setEquCount(equCartDetailVO.getEquCount());
 			equOrderItem.setEquCompensation(0);
+			equOrderItems.add(equOrderItem);
 			
+			allSum += equipment.getEquBorrowUnitvaluent() * equCartDetailVO.getEquCount();
+			allDeposit += equipment.getEquDeposit() * equCartDetailVO.getEquCount();
+			
+		}
+		
+		//生成订单
+//		equOrder.setUser(userDao.getUserById(equOrderVO.getUserId()));//查找用户，需要UserDao支持
+		equOrder.setEquOrderDate(new Timestamp(System.currentTimeMillis()));
+		equOrder.setEquOrderStatement(0);
+		equOrder.setEquOrderSum(allSum);
+		equOrder.setEquTotalDeposit(allDeposit);
+		equOrderDao.addEquOrder(equOrder);
+		
+		//保存订单项
+		for(EquOrderItem equOrderItem : equOrderItems)
+		{
 			equOrderItemDao.addEquOrderItem(equOrderItem);
 		}
 		
@@ -82,6 +106,14 @@ public class EquOrderServiceImpl implements EquOrderService {
 		// TODO Auto-generated method stub
 		
 		equOrder = mapper.map(equOrderVO, EquOrder.class);
+		if(equOrder.getEquOrderStatement() == 2)
+		{
+			equOrder.setEquBorrowDate(new Timestamp(System.currentTimeMillis()));
+		}
+		else if(equOrder.getEquOrderStatement() == 3)
+		{
+			equOrder.setEquReturnDate(new Timestamp(System.currentTimeMillis()));
+		}
 //		equOrder.setUser(userDao.getUserById(equOrderVO.getUserId()));//查找用户，需要UserDao支持
 		equOrderDao.updateEquOrder(equOrder);
 	}
@@ -119,13 +151,16 @@ public class EquOrderServiceImpl implements EquOrderService {
 		return equOrderVOs;
 	}
 
-	public List<EquOrderVO> dividePageOfEquOrder(int nextPage, int rowOfEachPage) {
+	public DividePageVO dividePageOfEquOrder(int thisPage, int rowOfEachPage) {
 		// TODO Auto-generated method stub
 		
-		equOrderVOs = new ArrayList<EquOrderVO>();
-		equOrders = equOrderDao.getPageEquOrder((nextPage*rowOfEachPage), rowOfEachPage);
+		DividePage dividePage = equOrderDao.getPageEquOrder(thisPage, rowOfEachPage);
+		equOrders = dividePage.getEquOrders();
+		DividePageVO dividePageVO = mapper.map(dividePage, DividePageVO.class);
+		
 		for(EquOrder equOrder : equOrders)
 		{
+			float compensation = 0, sum = 0, deposit = 0;
 			equOrderVO = mapper.map(equOrder, EquOrderVO.class);
 			if(equOrder.getUser() != null)
 			{
@@ -133,10 +168,20 @@ public class EquOrderServiceImpl implements EquOrderService {
 				equOrderVO.setUserName(equOrder.getUser().getUserName());
 			}
 			
-			equOrderVOs.add(equOrderVO);
+			equOrderItems = equOrderItemDao.getEquOrderItemByEquOrderId(equOrder.getEquOrderId());
+			for(EquOrderItem equOrderItem : equOrderItems)
+			{
+				compensation += equOrderItem.getEquCompensation();
+				sum += equOrderItem.getEquipment().getEquBorrowUnitvaluent()*equOrderItem.getEquCount();
+				deposit += equOrderItem.getEquipment().getEquDeposit()*equOrderItem.getEquCount();
+			}
+			equOrderVO.setEquTotalCompensation(compensation);
+			equOrderVO.setEquOrderSum(sum);
+			equOrderVO.setEquTotalDeposit(deposit);
+			
+			dividePageVO.getEquOrderVOs().add(equOrderVO);
 		}
-		
-		return equOrderVOs;
+		return dividePageVO;
 	}
 
 }

@@ -4,15 +4,15 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
-import com.xyz.gym_management_sys.po.EquOrderItem;
-import com.xyz.gym_management_sys.po.Equipment;
+import com.xyz.gym_management_sys.filter.AuthEquVali;
+import com.xyz.gym_management_sys.po.User;
 import com.xyz.gym_management_sys.service.EquOrderItemService;
 import com.xyz.gym_management_sys.service.EquOrderService;
 import com.xyz.gym_management_sys.service.EquipmentService;
@@ -42,15 +42,16 @@ public class EquOrderAction
 	private List<EquOrderItemVO> equOrderItemVOs;
 	private List<EquCartDetailVO> equCartDetailVOs;
 	private DividePageVO dividePageVO;
-	
-	
+
+	@AuthEquVali
 	@RequestMapping(value="remove")
 	public String removeEquOrder(Integer equOrderId)
 	{
 		equOrderService.removeEquOrder(equOrderId);
 		return "redirect:/equOrder/findAll?thisPage=" + 1;
 	}
-	
+
+	@AuthEquVali
 	@RequestMapping(value="update",method=RequestMethod.POST)
 	public String updateEquOrder(EquOrderVO equOrderVO,String borrowDate,String returnDate)
 	{
@@ -65,7 +66,8 @@ public class EquOrderAction
 		equOrderService.updateEquOrder(equOrderVO);
 		return "redirect:/equOrder/findAll?thisPage=" + 1;
 	}
-	
+
+	@AuthEquVali
 	@RequestMapping(value="updateItem")
 	public String updateEquOrderItem(EquOrderItemVO equOrderItemVO)
 	{
@@ -91,7 +93,8 @@ public class EquOrderAction
 		
 		return "redirect:/equOrder/turnToItem?equOrderId=" + equOrderItemVO.getEquOrderId();
 	}
-	
+
+	@AuthEquVali
 	@RequestMapping(value="findById")
 	public String findById(Integer equOrderId,Map<String, Object> model)
 	{
@@ -100,14 +103,7 @@ public class EquOrderAction
 		return null;
 	}
 
-	@RequestMapping(value="findByUserId")
-	public String findByUserId(Integer userId,Map<String, Object> model)
-	{
-		equOrderVOs = equOrderService.findEquOrderByUserId(userId);
-		model.put("equOrderVOs", equOrderVOs);
-		return null;
-	}
-
+	@AuthEquVali
 	@RequestMapping(value="findAll")
 	public String findAllEquOrder(Integer thisPage,Map<String, Object> model)
 	{
@@ -120,6 +116,7 @@ public class EquOrderAction
 		return "equ_order_management";
 	}
 
+	@AuthEquVali
 	@RequestMapping(value="findItem")
 	public String findItemByOrderId(Integer equOrderId,Map<String, Object> model)
 	{
@@ -127,7 +124,8 @@ public class EquOrderAction
 		model.put("equOrderItemVOs", equOrderItemVOs);
 		return null;
 	}
-	
+
+	@AuthEquVali
 	@RequestMapping(value="turnToUpdate")
 	public String turnToUpdate(Integer equOrderId,Model model)
 	{
@@ -136,7 +134,8 @@ public class EquOrderAction
 		
 		return "equ_order_update";
 	}
-	
+
+	@AuthEquVali
 	@RequestMapping(value="turnToItem")
 	public String turnToOrderItem(Integer equOrderId,Model model)
 	{
@@ -145,7 +144,8 @@ public class EquOrderAction
 		
 		return "equ_item_management";
 	}
-	
+
+	@AuthEquVali
 	@RequestMapping(value="turnToItemUpdate")
 	public String turnToItemUpdate(Integer equOrderItemId,Model model)
 	{
@@ -154,4 +154,5 @@ public class EquOrderAction
 		
 		return "equ_item_update";
 	}
+	
 }

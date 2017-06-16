@@ -2,6 +2,7 @@ package com.xyz.gym_management_sys.dao;
 
 import java.util.List;
 
+import com.xyz.gym_management_sys.po.DividePage;
 import com.xyz.gym_management_sys.po.Equipment;
 import com.xyz.gym_management_sys.po.Field;
 
@@ -52,9 +53,17 @@ public interface FieldDao
 	
 	/**
 	 *获取分页中显示的场地
-	 *@param name startRow 开始行
+	 *@param name thisPage 当前页数
 	 *@param name rowOrEachPage 每一页的行数
-	 *@return List<Field> 场地实例集合
+	 *@return DividePage 分页信息实例
 	 */
-	public List<Field> getPageField(int startRow,int rowOfEachPage);
+	public DividePage getPageField(int thisPage,int rowOfEachPage);
+	
+	/**
+	 *根据场地类型获取分页中显示的场地
+	 *@param name thisPage 当前页数
+	 *@param name rowOrEachPage 每一页的行数
+	 *@return DividePage 分页信息实例
+	 */
+	public DividePage getPageFieldByFieldType(int thisPage,int rowOfEachPage,int fieldTypeId);
 }

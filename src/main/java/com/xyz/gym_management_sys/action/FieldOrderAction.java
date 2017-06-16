@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
+import com.xyz.gym_management_sys.filter.AuthEquVali;
+import com.xyz.gym_management_sys.filter.AuthFieldVali;
 import com.xyz.gym_management_sys.service.FieldOrderItemService;
 import com.xyz.gym_management_sys.service.FieldOrderService;
 import com.xyz.gym_management_sys.vo.CartVO;
@@ -42,6 +44,7 @@ public class FieldOrderAction
 	private List<FieldOrderVO> fieldOrderVOs;
 	private List<FieldOrderItemVO> fieldOrderItemVOs;
 
+	@AuthFieldVali
 	@RequestMapping(value="add")
 	public String addFieldOrder(@CookieValue(value="fieldCartCookie",required=false)String fieldCartCookieStr,
 			HttpServletResponse response,FieldOrderVO fieldOrderVO)
@@ -62,7 +65,8 @@ public class FieldOrderAction
 		
 		return null;
 	}
-	
+
+	@AuthFieldVali
 	@RequestMapping(value="remove")
 	public String removeFieldOrder(@RequestParam(value="fieldOrderId")Integer fieldOrderId)
 	{
@@ -70,6 +74,7 @@ public class FieldOrderAction
 		return null;
 	}
 
+	@AuthFieldVali
 	@RequestMapping(value="update")
 	public String updateFieldOrder(FieldOrderVO fieldOrderVO)
 	{
@@ -77,6 +82,7 @@ public class FieldOrderAction
 		return null;
 	}
 
+	@AuthFieldVali
 	@RequestMapping(value="findById")
 	public String findById(@RequestParam(value="fieldOrderId")Integer fieldOrderId,Model model)
 	{
@@ -84,15 +90,8 @@ public class FieldOrderAction
 		model.addAttribute("fieldOrderVO", fieldOrderVO);
 		return null;
 	}
-	
-	@RequestMapping(value="findByUserId")
-	public String findByUserId(Integer userId,Model model)
-	{
-		fieldOrderVOs = fieldOrderService.findFieldOrderByUserId(userId);
-		model.addAttribute("fieldOrderVOs", fieldOrderVOs);
-		return null;
-	}
 
+	@AuthFieldVali
 	@RequestMapping(value="findAll")
 	public String findAllField(Model model)
 	{
@@ -101,6 +100,7 @@ public class FieldOrderAction
 		return null;
 	}
 
+	@AuthFieldVali
 	@RequestMapping(value="findItem")
 	public String findItemByOrderId(Integer fieldOrderId,Model model)
 	{

@@ -88,10 +88,10 @@ public class EquOrdetServiceTest
 	
 	public void test05()
 	{
-		List<EquOrderVO> equOrderVOs = equOrderService.dividePageOfEquOrder(3, 5);
-		for(EquOrderVO equOrderVO : equOrderVOs)
-		{
-			System.out.println(equOrderVO);
-		}
+//		List<EquOrderVO> equOrderVOs = equOrderService.dividePageOfEquOrder(3, 5);
+//		for(EquOrderVO equOrderVO : equOrderVOs)
+//		{
+//			System.out.println(equOrderVO);
+//		}
 	}
 }

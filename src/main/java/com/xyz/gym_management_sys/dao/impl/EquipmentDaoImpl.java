@@ -147,8 +147,6 @@ public class EquipmentDaoImpl implements EquipmentDao {
 		dividePage.setPageCount(pageCount);
 		dividePage.setThisPage(thisPage);
 		dividePage.setEquipments(equipments);
-		System.out.println(pageCount);
-		System.out.println(dividePage.getLastPage());
 		
 		return dividePage;
 	}	

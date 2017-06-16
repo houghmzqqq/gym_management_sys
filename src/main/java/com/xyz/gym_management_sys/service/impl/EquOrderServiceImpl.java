@@ -7,12 +7,12 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.dozer.DozerBeanMapper;
-import org.hibernate.engine.transaction.jta.platform.internal.SynchronizationRegistryBasedSynchronizationStrategy;
 import org.springframework.stereotype.Service;
 
 import com.xyz.gym_management_sys.dao.EquOrderDao;
 import com.xyz.gym_management_sys.dao.EquOrderItemDao;
 import com.xyz.gym_management_sys.dao.EquipmentDao;
+import com.xyz.gym_management_sys.dao.UserDao;
 import com.xyz.gym_management_sys.po.DividePage;
 import com.xyz.gym_management_sys.po.EquOrder;
 import com.xyz.gym_management_sys.po.EquOrderItem;
@@ -21,7 +21,6 @@ import com.xyz.gym_management_sys.service.EquOrderService;
 import com.xyz.gym_management_sys.vo.DividePageVO;
 import com.xyz.gym_management_sys.vo.EquCartDetailVO;
 import com.xyz.gym_management_sys.vo.EquOrderVO;
-import com.xyz.gym_management_sys.vo.EquipmentVO;
 
 @Service
 public class EquOrderServiceImpl implements EquOrderService {
@@ -32,8 +31,8 @@ public class EquOrderServiceImpl implements EquOrderService {
 	private EquOrderItemDao equOrderItemDao;
 	@Resource
 	private EquipmentDao equipmentDao;
-//	@Resource
-//	private UserDao userDao;
+	@Resource
+	private UserDao userDao;
 	@Resource
 	private DozerBeanMapper mapper;
 	
@@ -48,7 +47,7 @@ public class EquOrderServiceImpl implements EquOrderService {
 	private DividePage dividePage;
 	private DividePageVO dividePageVO;
 	
-	public void addEquOrder(List<EquCartDetailVO> equCartDetailVOs) {
+	public void addEquOrder(List<EquCartDetailVO> equCartDetailVOs,int userId) {
 		// TODO Auto-generated method stub
 		
 		equOrderItems = new ArrayList<EquOrderItem>();
@@ -73,7 +72,8 @@ public class EquOrderServiceImpl implements EquOrderService {
 		}
 		
 		//生成订单
-//		equOrder.setUser(userDao.getUserById(equOrderVO.getUserId()));//查找用户，需要UserDao支持
+		equOrder.setUser(userDao.findUserById(userId));
+		System.out.println(equOrder.getUser());
 		equOrder.setEquOrderDate(new Timestamp(System.currentTimeMillis()));
 		equOrder.setEquOrderStatement(0);
 		equOrder.setEquOrderSum(allSum);
@@ -182,6 +182,14 @@ public class EquOrderServiceImpl implements EquOrderService {
 			dividePageVO.getEquOrderVOs().add(equOrderVO);
 		}
 		return dividePageVO;
+	}
+
+	public void mergeEquOrder(EquOrderVO equOrderVO) {
+		// TODO Auto-generated method stub
+		
+		equOrder = mapper.map(equOrderVO, EquOrder.class);
+//		equOrder.setUser(userDao.getUserById());
+		equOrderDao.mergeEquOrder(equOrder);
 	}
 
 }

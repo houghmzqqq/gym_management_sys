@@ -12,9 +12,13 @@ import org.springframework.stereotype.Service;
 import com.xyz.gym_management_sys.dao.FieldDao;
 import com.xyz.gym_management_sys.dao.FieldOrderItemDao;
 import com.xyz.gym_management_sys.dao.FieldTypeDao;
+import com.xyz.gym_management_sys.po.DividePage;
+import com.xyz.gym_management_sys.po.Equipment;
 import com.xyz.gym_management_sys.po.Field;
 import com.xyz.gym_management_sys.po.FieldOrderItem;
 import com.xyz.gym_management_sys.service.FieldService;
+import com.xyz.gym_management_sys.vo.DividePageVO;
+import com.xyz.gym_management_sys.vo.EquipmentVO;
 import com.xyz.gym_management_sys.vo.FieldVO;
 
 @Service
@@ -115,5 +119,47 @@ public class FieldServiceImpl implements FieldService {
 		}
 		return fieldVOs;
 	}
+	
+	public DividePageVO dividePageOfField(int thisPage, int rowOfEachPage) {
+		// TODO Auto-generated method stub
 
+//		equipmentVOs = new ArrayList<EquipmentVO>();
+		DividePage dividePage = fieldDao.getPageField(thisPage, rowOfEachPage);
+		fields = dividePage.getFields();
+		DividePageVO dividePageVO = mapper.map(dividePage, DividePageVO.class);
+		
+		for(Field field : fields)
+		{
+			fieldVO = mapper.map(field, FieldVO.class);
+			if(field.getFieldType() != null)
+			{
+				fieldVO.setFieldTypeName(field.getFieldType().getFieldTypeName());
+				fieldVO.setFieldTypeId(field.getFieldType().getFieldTypeId());
+			}
+			
+			dividePageVO.getFieldVOs().add(fieldVO);
+		}
+		return dividePageVO;
+	} 
+	
+	public DividePageVO dividePageOfFieldByTypeId(int thisPage, int rowOfEachPage, int fieldTypeId) {
+		// TODO Auto-generated method stub
+		
+		DividePage dividePage = fieldDao.getPageFieldByFieldType(thisPage, rowOfEachPage, fieldTypeId);
+		fields = dividePage.getFields();
+		DividePageVO dividePageVO = mapper.map(dividePage, DividePageVO.class);
+		
+		for(Field field : fields)
+		{
+			fieldVO = mapper.map(field, FieldVO.class);
+			if(field.getFieldType() != null)
+			{
+				fieldVO.setFieldTypeName(field.getFieldType().getFieldTypeName());
+				fieldVO.setFieldTypeId(field.getFieldType().getFieldTypeId());
+			}
+			
+			dividePageVO.getFieldVOs().add(fieldVO);
+		}
+		return dividePageVO;
+	}
 }

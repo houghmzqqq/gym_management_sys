@@ -106,48 +106,33 @@
 		</div>
 
 		<div class="navbar-collapse collapse" style="height: 1px;">
-			<ul id="main-menu" class="nav navbar-nav navbar-right">
-				<li class="dropdown hidden-xs"><a href="#"
-					class="dropdown-toggle" data-toggle="dropdown"> <span
-						class="glyphicon glyphicon-user padding-right-small"
-						style="position: relative; top: 3px;"></span> Jack Smith <i
-						class="fa fa-caret-down"></i>
-				</a>
+          <ul id="main-menu" class="nav navbar-nav navbar-right">
+            <li class="dropdown hidden-xs">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span>${user.relName}
+                    <i class="fa fa-caret-down"></i>
+                </a>
 
-					<ul class="dropdown-menu">
-						<li><a href="./">My Account</a></li>
-						<li class="divider"></li>
-						<li class="dropdown-header">Admin Panel</li>
-						<li><a href="./">Users</a></li>
-						<li><a href="./">Security</a></li>
-						<li><a tabindex="-1" href="./">Payments</a></li>
-						<li class="divider"></li>
-						<li><a tabindex="-1" href="sign-in.html">Logout</a></li>
-					</ul></li>
-			</ul>
+              <ul class="dropdown-menu">
+                <li><a href="./">我的账户</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">管理面板</li>
+                <li><a href="./">用户列表</a></li>
+                <li><a href="./">Security</a></li>
+                <li><a tabindex="-1" href="./">Payments</a></li>
+                <li class="divider"></li>
+                <li><a tabindex="-1" href="${pageContext.request.contextPath}/login/logout">退出</a></li>
+              </ul>
+            </li>
+          </ul>
 
-		</div>
+        </div>
 	</div>
 	</div>
 
 
 	<div class="sidebar-nav">
 		<ul>
-			<li><a href="#" data-target=".dashboard-menu" class="nav-header"
-				data-toggle="collapse"><i class="fa fa-fw fa-dashboard"></i>
-					Dashboard<i class="fa fa-collapse"></i></a></li>
-			<li><ul class="dashboard-menu nav nav-list collapse">
-					<li><a href="index.html"><span class="fa fa-caret-right"></span>
-							Main</a></li>
-					<li><a href="users.html"><span class="fa fa-caret-right"></span>
-							User List</a></li>
-					<li><a href="user.html"><span class="fa fa-caret-right"></span>
-							User Profile</a></li>
-					<li><a href="media.html"><span class="fa fa-caret-right"></span>
-							Media</a></li>
-					<li><a href="calendar.html"><span
-							class="fa fa-caret-right"></span> Calendar</a></li>
-				</ul></li>
 
 			<!-- --------------------------------------------------------------------------------------------------------- -->
 
@@ -157,67 +142,12 @@
 				data-target=".premium-menu" class="nav-header collapsed"
 				data-toggle="collapse"><i class="fa fa-fw fa-fighter-jet"></i>
 					器材<i class="fa fa-collapse"></i></a></li>
-			<li><ul class="premium-menu nav nav-list collapse">
-					<li><a href="${pageContext.request.contextPath}/equ/findForClient?thisPage=1&equTypeId=0"><span
-							class="fa fa-caret-right"></span> 器材查询</a></li>
-					<li><a href="${pageContext.request.contextPath}/cart/listEqu"><span
-							class="fa fa-caret-right"></span> 器材订单项</a></li>
+			<li><ul class="premium-menu nav nav-list collapse in">
 					<li><a href="${pageContext.request.contextPath}/equ/findByTypeId?thisPage=1&equTypeId=0"><span
 							class="fa fa-caret-right"></span> 器材管理</a></li>
-					<!-- <li ><a href="premium-blog-item.html"><span class="fa fa-caret-right"></span> Blog Page</a></li>
-                <li ><a href="premium-pricing-tables.html"><span class="fa fa-caret-right"></span> Pricing Tables</a></li>
-                <li ><a href="premium-upgrade-account.html"><span class="fa fa-caret-right"></span> Upgrade Account</a></li>
-                <li ><a href="premium-widgets.html"><span class="fa fa-caret-right"></span> Widgets</a></li>
-                <li ><a href="premium-timeline.html"><span class="fa fa-caret-right"></span> Activity Timeline</a></li>
-                <li ><a href="premium-users.html"><span class="fa fa-caret-right"></span> Enhanced Users List</a></li>
-                <li ><a href="premium-media.html"><span class="fa fa-caret-right"></span> Enhanced Media</a></li>
-                <li ><a href="premium-invoice.html"><span class="fa fa-caret-right"></span> Invoice</a></li>
-                <li ><a href="premium-build.html"><span class="fa fa-caret-right"></span> Advanced Tools</a></li>
-                <li ><a href="premium-colors.html"><span class="fa fa-caret-right"></span> Additional Color Themes</a></li> -->
-				</ul></li>
-
-			<li><a href="#" data-target=".legal-menu"
-				class="nav-header collapsed" data-toggle="collapse"><i
-					class="fa fa-fw fa-legal"></i> 场地<i class="fa fa-collapse"></i></a></li>
-			<li><ul class="legal-menu nav nav-list collapse">
-					<li><a href="${pageContext.request.contextPath}/field/findForClient?thisPage=1&fieldTypeId=0"><span
-							class="fa fa-caret-right"></span>场地查询</a></li>
-					<li><a href="${pageContext.request.contextPath}/cart/listField"><span
-							class="fa fa-caret-right"></span>场地订单项</a></li>
-					<li><a href="${pageContext.request.contextPath}/field/findByTypeId?thisPage=1&fieldTypeId=0"><span
-							class="fa fa-caret-right"></span>场地管理</a></li>
-				</ul></li>
-
-			<li><a href="#" data-target=".accounts-menu"
-				class="nav-header collapsed" data-toggle="collapse"><i
-					class="fa fa-fw fa-briefcase"></i> 订单<i class="fa fa-collapse"></i></a></li>
-			<li><ul class="accounts-menu nav nav-list collapse in">
-					<li><a href="${pageContext.request.contextPath}/fieldOrder/findByUserId?userId=${sessionScope.user.userId}"><span
-							class="fa fa-caret-right"></span>场地订单查询</a></li>
-					<li><a href="${pageContext.request.contextPath}/equOrder/findByUserId?userId=${sessionScope.user.userId}"><span
-							class="fa fa-caret-right"></span>器材订单查询</a></li>
-					<li><a href="${pageContext.request.contextPath}/fieldOrder/findAll?thisPage=1"><span
-							class="fa fa-caret-right"></span>场地订单管理</a></li>
 					<li class="active"><a href="${pageContext.request.contextPath}/equOrder/findAll?thisPage=1"><span
 							class="fa fa-caret-right"></span>器材订单管理</a></li>
 				</ul></li>
-
-			<!--  <li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i class="fa fa-fw fa-briefcase"></i> Account <span class="label label-info">+3</span></a></li>
-       <li><ul class="accounts-menu nav nav-list collapse">
-           <li ><a href="sign-in.html"><span class="fa fa-caret-right"></span> Sign In</a></li>
-           <li ><a href="sign-up.html"><span class="fa fa-caret-right"></span> Sign Up</a></li>
-           <li ><a href="reset-password.html"><span class="fa fa-caret-right"></span> Reset Password</a></li>
-            </ul></li> -->
-
-
-
-			<li><a href="help.html" class="nav-header"><i
-					class="fa fa-fw fa-question-circle"></i> Help</a></li>
-			<li><a href="faq.html" class="nav-header"><i
-					class="fa fa-fw fa-comment"></i> Faq</a></li>
-			<li><a href="http://portnine.com/bootstrap-themes/aircraft"
-				class="nav-header" target="blank"><i class="fa fa-fw fa-heart"></i>
-					Get Premium</a></li>
 		</ul>
 	</div>
 

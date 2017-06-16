@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://dozer.sourceforge.net  
-       http://dozer.sourceforge.net/schema/beanmapping.xsd">
+      http://dozer.sourceforge.net/schema/beanmapping.xsd">
        
 	<!-- 器材 -->
 	<mapping>
@@ -51,4 +51,82 @@
 		</field-exclude>
 	</mapping>
 	
+	<!-- 场地 -->
+	<mapping>
+		<class-a>com.xyz.gym_management_sys.po.Role</class-a>
+		<class-b>com.xyz.gym_management_sys.vo.RoleVo</class-b>
+	</mapping>
+	<mapping>
+		<class-a>com.xyz.gym_management_sys.po.Admin</class-a>
+		<class-b>com.xyz.gym_management_sys.vo.AdminVo</class-b>
+		<field>
+			<a>role.roleName</a>
+			<b>roleName</b>
+		</field>
+	</mapping>
+	<mapping>
+		<class-a>com.xyz.gym_management_sys.po.Admin</class-a>
+		<class-b>com.xyz.gym_management_sys.vo.LoginVo</class-b>
+		<field>
+			<a>adminName</a>
+			<b>userName</b>
+		</field>
+	</mapping>
+	<mapping>
+		<class-a>com.xyz.gym_management_sys.po.User</class-a>
+		<class-b>com.xyz.gym_management_sys.vo.LoginVo</class-b>
+	</mapping>
+	<mapping>
+		<class-a>com.xyz.gym_management_sys.po.Admin</class-a>
+		<class-b>com.xyz.gym_management_sys.vo.AddAdminVo</class-b>
+		<field>
+			<a>role.roleName</a>
+			<b>roleName</b>
+		</field>
+	</mapping>
+	<mapping>
+		<class-a>com.xyz.gym_management_sys.po.User</class-a>
+		<class-b>com.xyz.gym_management_sys.vo.SimpleUserVo</class-b>
+	</mapping>
+	<mapping>
+		<class-a>com.xyz.gym_management_sys.po.UserInfo</class-a>
+		<class-b>com.xyz.gym_management_sys.vo.UserInfoVo</class-b>
+		<field>
+			<a>user.userId</a>
+			<b>userId</b>
+		</field>
+		<field>
+			<a>user.userName</a>
+			<b>userName</b>
+		</field>
+		<field>
+			<a>user.userRole</a>
+			<b>userRole</b>
+		</field>
+	</mapping>
+	
+	<mapping>
+		<class-a>com.xyz.gym_management_sys.po.UserInfo</class-a>
+		<class-b>com.xyz.gym_management_sys.vo.UserAllInfoVo</class-b>
+		<field>
+			<a>user.userId</a>
+			<b>userId</b>
+		</field>
+		<field>
+			<a>user.userName</a>
+			<b>userName</b>
+		</field>
+		<field>
+			<a>user.userRole</a>
+			<b>userRole</b>
+		</field>
+	</mapping>
+	<mapping>
+		<class-a>com.xyz.gym_management_sys.po.User</class-a>
+		<class-b>com.xyz.gym_management_sys.vo.SignUpVo</class-b>
+	</mapping>
+	<mapping>
+		<class-a>com.xyz.gym_management_sys.po.UserInfo</class-a>
+		<class-b>com.xyz.gym_management_sys.vo.SignUpVo</class-b>
+	</mapping>
 </mappings>  

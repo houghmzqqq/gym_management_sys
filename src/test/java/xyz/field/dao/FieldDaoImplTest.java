@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.xyz.gym_management_sys.dao.FieldDao;
 import com.xyz.gym_management_sys.dao.FieldTypeDao;
+import com.xyz.gym_management_sys.po.DividePage;
 import com.xyz.gym_management_sys.po.Field;
 import com.xyz.gym_management_sys.po.FieldType;
 
@@ -30,10 +31,10 @@ public class FieldDaoImplTest
 	@Rollback(false)
 	public void testAll()
 	{
-//		test01();
+		test01();
 //		test02();
 //		test03();
-		test04();
+//		test04();
 	}
 	
 	public void test01()
@@ -43,14 +44,17 @@ public class FieldDaoImplTest
 		for(int i=0;i<5;i++)
 		{
 			
-			field = new Field("场地"+i, 3, 10, fieldTypeDao.getFieldTypeById(2));
-			fieldDao.addField(field);
+			for(int j=1;j<6;j++)
+			{
+				field = new Field("场地"+i, 3, 10, fieldTypeDao.getFieldTypeById(j));
+				fieldDao.addField(field);
+			}
 		}
 	}
 	
 	public void test02()
 	{
-		fieldDao.deleteField(5);
+//		fieldDao.deleteField(5);
 	}
 	
 	public void test03()
@@ -71,6 +75,16 @@ public class FieldDaoImplTest
 		for(Field field : fields)
 		{
 			System.out.println("getByTypeId----"+field.getFieldName());
+		}
+	}
+	
+	public void test05()
+	{
+		DividePage dividePage = fieldDao.getPageField(1, 5);
+		List<Field> fields = dividePage.getFields();
+		for(Field field : fields)
+		{
+			System.out.println(field);
 		}
 	}
 }

@@ -122,5 +122,12 @@ public class EquOrder implements Serializable {
 	public void setEquTotalCompensation(float equTotalCompensation) {
 		this.equTotalCompensation = equTotalCompensation;
 	}
+	@Override
+	public String toString() {
+		return "EquOrder [equOrderId=" + equOrderId + ", equOrderDate=" + equOrderDate + ", equBorrowDate="
+				+ equBorrowDate + ", equReturnDate=" + equReturnDate + ", equBorrowTime=" + equBorrowTime
+				+ ", equOrderStatement=" + equOrderStatement + ", equTotalDeposit=" + equTotalDeposit + ", equOrderSum="
+				+ equOrderSum + ", equTotalCompensation=" + equTotalCompensation + ", user=" + user + "]";
+	}
 	
 }

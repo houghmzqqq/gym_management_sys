@@ -13,8 +13,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.xyz.gym_management_sys.dao.EquipmentDao;
-import com.xyz.gym_management_sys.po.Equipment;
 import com.xyz.gym_management_sys.service.EquipmentService;
+import com.xyz.gym_management_sys.vo.DividePageVO;
 import com.xyz.gym_management_sys.vo.EquipmentVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,14 +28,14 @@ public class EquipmentServiceTest
 	private EquipmentDao equipmentDao;
 	
 	@Test
-	@Transactional
-	@Rollback(false)
+//	@Transactional
+//	@Rollback(true)
 	public void testAll()
 	{
 //		testAdd();
-//		test02();
+		test02();
 //		test03();
-		test04();
+//		test04();
 	}
 	
 	public void testAdd()
@@ -50,17 +50,13 @@ public class EquipmentServiceTest
 	
 	public void test02()
 	{
-		List<EquipmentVO> equipmentVOs = equipmentService.dividePageOfEqu(3, 3);
-		
-		for(EquipmentVO equipmentVO : equipmentVOs)
-		{
-			System.out.println(equipmentVO);
-		}
+		DividePageVO dividePageVO = equipmentService.dividePageOfEqu(2, 3);
+		System.out.println(dividePageVO);
 	}
 	
 	public void test03()
 	{
-		equipmentService.removeEqu(20);
+		equipmentService.removeEqu(16);
 	}
 	
 	public void test04()

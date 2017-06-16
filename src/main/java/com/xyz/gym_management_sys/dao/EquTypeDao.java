@@ -14,9 +14,15 @@ public interface EquTypeDao
 	
 	/**
 	 *删除器材类型
-	 *@param name equTypeId 器材类型编号
+	 *@param name equType 器材类型实例
 	 */
-	public void deleteEquType(int equTypeId);
+	public void deleteEquType(EquType equType);
+	
+	/**
+	 *更新器材累心
+	 *@param name EquType 器材类型实例
+	 */
+	public void updateEquType(EquType equType);
 	
 	/**
 	 *通过器材类型编号查找器材类型

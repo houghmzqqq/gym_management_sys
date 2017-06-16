@@ -1,79 +1,80 @@
 package com.xyz.gym_management_sys.vo;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
-import com.xyz.gym_management_sys.po.Field;
-import com.xyz.gym_management_sys.po.FieldOrder;
 
 public class EquOrderItemVO implements Serializable
 {
-	private int fieldOrderItemId;
-	private int fieldOrderId;
-	private int fieldId;
-	private String fieldName;
-	private Boolean fieldIsBroken;
-	private float fieldCompensation;
-	private Timestamp fieldBorrowDate;
-	private Timestamp fieldReturnDate;
-	private int fieldBorrowTime;
-//	private Field field;
-//	private FieldOrder fieldOrder;
+	private int equOrderItemId;
+	private int equOrderId;
+	private int equId;
+	private String equName;
+	private int equBreakCount = 0;
+	private int equCount;
+	private float equCompensation = 0;
+	private float itemSum;//订单项租金
+	private float itemDeposit;//订单项押金
 	
-	
-	public int getFieldOrderItemId() {
-		return fieldOrderItemId;
+	public float getItemSum() {
+		return itemSum;
 	}
-	public void setFieldOrderItemId(int fieldOrderItemId) {
-		this.fieldOrderItemId = fieldOrderItemId;
+	public void setItemSum(float itemSum) {
+		this.itemSum = itemSum;
 	}
-	public int getFieldOrderId() {
-		return fieldOrderId;
+	public float getItemDeposit() {
+		return itemDeposit;
 	}
-	public void setFieldOrderId(int fieldOrderId) {
-		this.fieldOrderId = fieldOrderId;
+	public void setItemDeposit(float itemDeposit) {
+		this.itemDeposit = itemDeposit;
 	}
-	public int getFieldId() {
-		return fieldId;
+	public int getEquOrderItemId() {
+		return equOrderItemId;
 	}
-	public void setFieldId(int fieldId) {
-		this.fieldId = fieldId;
+	public void setEquOrderItemId(int equOrderItemId) {
+		this.equOrderItemId = equOrderItemId;
 	}
-	public String getFieldName() {
-		return fieldName;
+	public int getEquOrderId() {
+		return equOrderId;
 	}
-	public void setFieldName(String fieldName) {
-		this.fieldName = fieldName;
+	public void setEquOrderId(int equOrderId) {
+		this.equOrderId = equOrderId;
 	}
-	public Boolean getFieldIsBroken() {
-		return fieldIsBroken;
+	public int getEquId() {
+		return equId;
 	}
-	public void setFieldIsBroken(Boolean fieldIsBroken) {
-		this.fieldIsBroken = fieldIsBroken;
+	public void setEquId(int equId) {
+		this.equId = equId;
 	}
-	public float getFieldCompensation() {
-		return fieldCompensation;
+	public String getEquName() {
+		return equName;
 	}
-	public void setFieldCompensation(float fieldCompensation) {
-		this.fieldCompensation = fieldCompensation;
+	public void setEquName(String equName) {
+		this.equName = equName;
 	}
-	public Timestamp getFieldBorrowDate() {
-		return fieldBorrowDate;
+	public int getEquBreakCount() {
+		return equBreakCount;
 	}
-	public void setFieldBorrowDate(Timestamp fieldBorrowDate) {
-		this.fieldBorrowDate = fieldBorrowDate;
+	public void setEquBreakCount(int equBreakCount) {
+		this.equBreakCount = equBreakCount;
 	}
-	public Timestamp getFieldReturnDate() {
-		return fieldReturnDate;
+	public int getEquCount() {
+		return equCount;
 	}
-	public void setFieldReturnDate(Timestamp fieldReturnDate) {
-		this.fieldReturnDate = fieldReturnDate;
+	public void setEquCount(int equCount) {
+		this.equCount = equCount;
 	}
-	public int getFieldBorrowTime() {
-		return fieldBorrowTime;
+	public float getEquCompensation() {
+		return equCompensation;
 	}
-	public void setFieldBorrowTime(int fieldBorrowTime) {
-		this.fieldBorrowTime = fieldBorrowTime;
+	public void setEquCompensation(float equCompensation) {
+		this.equCompensation = equCompensation;
+	}
+	@Override
+	public String toString() {
+		return "EquOrderItemVO [equOrderItemId=" + equOrderItemId + ", equOrderId=" + equOrderId + ", equId=" + equId
+				+ ", equName=" + equName + ", equBreakCount=" + equBreakCount + ", equCount=" + equCount
+				+ ", equCompensation=" + equCompensation + ", itemSum=" + itemSum + ", itemDeposit=" + itemDeposit
+				+ "]";
 	}
 	
 }

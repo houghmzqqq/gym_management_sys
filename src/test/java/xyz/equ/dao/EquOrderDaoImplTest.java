@@ -51,7 +51,7 @@ public class EquOrderDaoImplTest
 	
 	public void testDel()
 	{
-		equOrderDao.deleteEquOrder(5);
+//		equOrderDao.deleteEquOrder(5);
 		System.out.println("delete success,delete equOrderId(5)");
 	}
 	
@@ -62,10 +62,10 @@ public class EquOrderDaoImplTest
 	
 	public void test04()
 	{
-		List<EquOrder> equOrders = equOrderDao.getEquOrderByUserId(1);
-		for(EquOrder equOrder : equOrders)
-		{
-			System.out.println("byUserId----"+equOrder);
-		}
+//		List<EquOrder> equOrders = equOrderDao.getEquOrderByUserId(1);
+//		for(EquOrder equOrder : equOrders)
+//		{
+//			System.out.println("byUserId----"+equOrder);
+//		}
 	}
 }

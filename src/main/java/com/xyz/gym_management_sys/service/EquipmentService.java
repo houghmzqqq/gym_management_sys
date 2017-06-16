@@ -3,6 +3,7 @@ package com.xyz.gym_management_sys.service;
 import java.util.List;
 
 import com.xyz.gym_management_sys.po.Equipment;
+import com.xyz.gym_management_sys.vo.DividePageVO;
 import com.xyz.gym_management_sys.vo.EquipmentVO;
 
 public interface EquipmentService 
@@ -11,9 +12,18 @@ public interface EquipmentService
 	 *分页查询器材信息
 	 *@param name thisPage 当前页
 	 *@param name rowOfEachPage 每一页行数
-	 *@return List<EquipmentVO> 器材信息实例集合
+	 *@return DividePageVO 分页信息实例
 	 */
-	public List<EquipmentVO> dividePageOfEqu(int nextPage,int rowOfEachPage);
+	public DividePageVO dividePageOfEqu(int nextPage,int rowOfEachPage);
+	
+	/**
+	 *分页查询器材信息
+	 *@param name thisPage 当前页
+	 *@param name rowOfEachPage 每一页行数
+	 *@param name equTypeId 器材类型编号
+	 *@return DividePageVO 分页信息实例
+	 */
+	public DividePageVO dividePageOfEquByTypeId(int thisPage,int rowOfEachPage,int equTypeId);
 	
 	/**
 	 *查找所有器材

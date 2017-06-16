@@ -19,10 +19,27 @@ public class EquOrderVO
 	private float equTotalCompensation;
 //	private User user;
 	
-	
 	public int getEquOrderId() {
 		return equOrderId;
 	}
+	public EquOrderVO() {
+	super();
+}
+	public EquOrderVO(int userId, String userName, Timestamp equOrderDate, Timestamp equBorrowDate, Timestamp equReturnDate,
+		int equBorrowTime, int equOrderStatement, float equTotalDeposit, float equOrderSum,
+		float equTotalCompensation) {
+	super();
+	this.userId = userId;
+	this.userName = userName;
+	this.equOrderDate = equOrderDate;
+	this.equBorrowDate = equBorrowDate;
+	this.equReturnDate = equReturnDate;
+	this.equBorrowTime = equBorrowTime;
+	this.equOrderStatement = equOrderStatement;
+	this.equTotalDeposit = equTotalDeposit;
+	this.equOrderSum = equOrderSum;
+	this.equTotalCompensation = equTotalCompensation;
+}
 	public int getUserId() {
 		return userId;
 	}
@@ -85,6 +102,14 @@ public class EquOrderVO
 	}
 	public void setEquTotalCompensation(float equTotalCompensation) {
 		this.equTotalCompensation = equTotalCompensation;
+	}
+	@Override
+	public String toString() {
+		return "EquOrderVO [equOrderId=" + equOrderId + ", userId=" + userId + ", userName=" + userName
+				+ ", equOrderDate=" + equOrderDate + ", equBorrowDate=" + equBorrowDate + ", equReturnDate="
+				+ equReturnDate + ", equBorrowTime=" + equBorrowTime + ", equOrderStatement=" + equOrderStatement
+				+ ", equTotalDeposit=" + equTotalDeposit + ", equOrderSum=" + equOrderSum + ", equTotalCompensation="
+				+ equTotalCompensation + "]";
 	}
 	
 }

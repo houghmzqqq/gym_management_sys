@@ -27,10 +27,9 @@ public class EquTypeDaoImpl implements EquTypeDao {
 		hibernateTemplate.save(equType);
 	}
 
-	public void deleteEquType(int equTypeId) {
+	public void deleteEquType(EquType equType) {
 		// TODO Auto-generated method stub
 		
-		EquType equType = getEquTypeById(equTypeId);
 		hibernateTemplate.delete(equType);
 	}
 
@@ -48,6 +47,12 @@ public class EquTypeDaoImpl implements EquTypeDao {
 		
 		return equTypes;
 		
+	}
+
+	public void updateEquType(EquType equType) {
+		// TODO Auto-generated method stub
+		
+		hibernateTemplate.saveOrUpdate(equType);
 	}
 
 }

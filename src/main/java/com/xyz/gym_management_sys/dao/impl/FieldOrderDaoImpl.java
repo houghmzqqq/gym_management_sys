@@ -23,10 +23,10 @@ public class FieldOrderDaoImpl implements FieldOrderDao {
 		hibernateTemplate.save(fieldOrder);
 	}
 
-	public void deleteFieldOrder(int fieldOrderId) {
+	public void deleteFieldOrder(FieldOrder fieldOrder) {
 		// TODO Auto-generated method stub
 		
-		hibernateTemplate.delete(getFieldOrderById(fieldOrderId));
+		hibernateTemplate.delete(fieldOrder);
 	}
 
 	public FieldOrder getFieldOrderById(int fieldOrderId) {
@@ -47,6 +47,25 @@ public class FieldOrderDaoImpl implements FieldOrderDao {
 		
 		DetachedCriteria criteria = DetachedCriteria.forClass(FieldOrder.class);
 		return (List<FieldOrder>) hibernateTemplate.findByCriteria(criteria, startRow, rowCount);
+	}
+
+	public void updateFieldOrder(FieldOrder fieldOrder) {
+		// TODO Auto-generated method stub
+		
+		hibernateTemplate.update(fieldOrder);
+	}
+
+	public void mergeFieldOrder(FieldOrder fieldOrder) {
+		// TODO Auto-generated method stub
+		
+		hibernateTemplate.merge(fieldOrder);
+	}
+
+	public List<FieldOrder> getAllFieldOrder() {
+		// TODO Auto-generated method stub
+		
+		String hql = "from FieldOrder fOrder";
+		return (List<FieldOrder>) hibernateTemplate.find(hql);
 	}
 
 }

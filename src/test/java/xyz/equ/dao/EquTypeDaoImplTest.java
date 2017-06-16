@@ -33,7 +33,7 @@ public class EquTypeDaoImplTest
 	
 	public void test02()
 	{
-		equTypeDao.deleteEquType(11);
+//		equTypeDao.deleteEquType(11);
 	}
 	
 	public void test03()
